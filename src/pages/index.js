@@ -1,21 +1,17 @@
-import React, {useEffect} from "react"
-import { navigate } from "gatsby"
+import React from "react"
+
+import Seo from "../components/seo/Seo"
+
+import useNavigateTo from "../hooks/useNavigateTo"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
 
-const IndexPage = () =>
-{
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      navigate("/home")
-    }
-  })
-
+const IndexPage = () => {
+  useNavigateTo("/home")
   return (
     <Layout>
-      <Seo title="Home" />
+      <Seo title="home" />
     </Layout>
-  );
+  )
 }
 
 export default IndexPage

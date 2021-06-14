@@ -1,0 +1,64 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb",
+    "prettier"
+  ],
+  "plugins": [
+    "prettier",
+    "react-hooks"
+  ],
+  "env": {
+    "jest": true,
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "prettier/prettier": [
+      "error"
+    ],
+    "no-unused-vars": "warn",
+    "one-var": "off",
+    "no-debugger": "warn",
+    "no-plusplus": "off",
+    "one-var-declaration-per-line": "off",
+    "function-paren-newline": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "react/forbid-prop-types": "off",
+    "react/no-array-index-key": "off",
+    "jsx-a11y/label-has-for": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "import/no-named-as-default": "off",
+    "import/prefer-default-export": "off",
+    "class-methods-use-this": "off",
+    "max-len": [
+      1,
+      120,
+      2,
+      {
+        "ignoreComments": true,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "object-curly-newline": [
+      "off",
+      {
+        "ObjectExpression": "always",
+        "ObjectPattern": {
+          "minProperties": 2
+        }
+      }
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ]
+  }
+}

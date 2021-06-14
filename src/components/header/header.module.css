@@ -1,0 +1,13 @@
+.active {
+    color: red
+}
+
+.link {
+    list-style-type: none;
+    padding: 1rem;
+}
+
+.ul {
+    display: flex;
+    flex: 1;
+}

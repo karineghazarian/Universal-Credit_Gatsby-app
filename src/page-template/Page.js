@@ -1,52 +1,68 @@
-import React from "react";
-import {Link, graphql} from "gatsby";
-import Layout from "../components/layout";
-import DynamicContent from "../components/DynamicContent";
+import React from "react"
+import PropTypes from "prop-types"
+import { graphql } from "gatsby"
 
-const Pages = ({data}) =>
-{
-    console.log(data);
+import Layout from "../components/layout/Layout"
+import DynamicContent from "../components/dynamicContent"
+import Seo from "../components/seo/Seo"
+import { pageDataSelector } from "./selectors"
 
-    return (
-        <Layout>
-            {data?.allStrapiPages?.nodes[0]?.content?.map((item, index) => (
-                <DynamicContent key={`${item.id}-${index}`} content={item}/>
-            ))}
-            {/*<ul>*/}
-            {/*  {data?.allStrapiPages.edges.map(document => (*/}
-            {/*    <li key={document.node.id}>*/}
-            {/*        <h2>*/}
-            {/*            <Link to={`/${document.node.id}`}>{document.node.title}</Link>*/}
-            {/*        </h2>*/}
-            {/*        <p>{document.node.content}</p>*/}
-            {/*    </li>*/}
-            {/*  ))}*/}
-            {/*</ul>*/}
-            <Link to="/page-2/">Go to page 2</Link>
-        </Layout>
-    );
-};
+const Pages = ({ data }) => {
+  debugger
+  const { path, title, content: contentArray, hasMap } = pageDataSelector(data)
+  return data ? (
+    <Layout>
+      <Seo title={title} />
+      {contentArray?.map(
+        (content, i) =>
+          content && (
+            <DynamicContent key={`${content.id}-${i}`} content={content} />
+          )
+      )}
+    </Layout>
+  ) : (
+    "Loading..."
+  )
+}
 
-export default Pages;
+Pages.defaultProps = {
+  data: null,
+}
+
+Pages.propTypes = {
+  data: PropTypes.shape({
+    strapiPage: PropTypes.shape({
+      path: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      hasMap: PropTypes.bool.isRequired,
+      content: PropTypes.array,
+    }),
+  }),
+}
+
+export default Pages
 
 export const pageQuery = graphql`
   query MyQuery($id: String) {
-    allStrapiPages(filter: {id: {eq: $id}}) {
-      nodes {
-        title
-        path
-        content {
-          id
-          markdown
-          Slide {
-            caption
-            cover {
-              publicURL
-              id
-            }
+    strapiPage(id: { eq: $id }) {
+      title
+      path
+      hasMap
+      content {
+        id
+        markdown
+        slide {
+          caption
+          cover {
+            publicURL
+            id
           }
+        }
+        box {
+          path
+          id
         }
       }
     }
   }
-`;
+`

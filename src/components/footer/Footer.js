@@ -1,12 +1,76 @@
 import React from "react"
-import PropTypes from "prop-types"
+import { graphql, Link, useStaticQuery } from "gatsby"
 
-const Footer = () => {
-  debugger
-  return <footer>© {new Date().getFullYear()}, Built with </footer>
-}
+import * as styles from "./footer.module.css"
 
-// Footer.defaultProps = {}
-// Footer.propTypes = {}
+import Markdown from "../markdown"
 
-export default React.memo(Footer)
+import { footerSelector } from "./selector"
+
+const Footer = React.memo(() => {
+  const data = useStaticQuery(graphql`
+    query MyFooter {
+      allStrapiFooter {
+        nodes {
+          navbarItems {
+            id
+            text
+            page {
+              path
+            }
+          }
+          markdownRemark {
+            Markdown
+          }
+          icons {
+            id
+            link
+            icon {
+              publicURL
+            }
+          }
+        }
+      }
+    }
+  `)
+  const { navbarItems = [], markdownRemark = {}, icons = [] } = footerSelector(
+    data
+  )
+  return (
+    <footer>
+      © {new Date().getFullYear()}
+      <nav>
+        <ul className={styles.ul}>
+          {navbarItems?.map(link => (
+            <li key={link.page.path} className={styles.link}>
+              <Link
+                to={`/${link.page.path}`}
+                activeClassName={styles.active}
+                title={link.text}
+              >
+                {link.text}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      {markdownRemark && <Markdown markdown={markdownRemark.Markdown} />}
+      <ul>
+        {icons?.map(icon => (
+          <li key={icon.id} className={styles.link}>
+            <a
+              href={icon.link}
+              title={icon.link}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={icon.icon.publicURL} alt={icon.link} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </footer>
+  )
+})
+
+export default Footer

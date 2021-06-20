@@ -2,14 +2,14 @@ import React from "react"
 import PropTypes from "prop-types"
 import { graphql } from "gatsby"
 
-import Layout from "../components/layout/Layout"
+import Layout from "../components/layout"
 import DynamicContent from "../components/dynamicContent"
-import Seo from "../components/seo/Seo"
-import { pageDataSelector } from "./selectors"
+import Seo from "../components/seo"
+
+import { pageSelector } from "./selector"
 
 const Pages = ({ data }) => {
-  debugger
-  const { path, title, content: contentArray, hasMap } = pageDataSelector(data)
+  const { title, content: contentArray } = pageSelector(data)
   return data ? (
     <Layout>
       <Seo title={title} />
@@ -34,8 +34,7 @@ Pages.propTypes = {
     strapiPage: PropTypes.shape({
       path: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
-      hasMap: PropTypes.bool.isRequired,
-      content: PropTypes.array,
+      content: PropTypes.array.isRequired,
     }),
   }),
 }
@@ -43,25 +42,36 @@ Pages.propTypes = {
 export default Pages
 
 export const pageQuery = graphql`
-  query MyQuery($id: String) {
+  query MyPage($id: String) {
     strapiPage(id: { eq: $id }) {
       title
       path
-      hasMap
       content {
         id
-        markdown
-        slide {
+        hasCalculator
+        hasMap
+        Markdown
+        Slide {
           caption
+          id
           cover {
             publicURL
-            id
+            name
           }
         }
-        box {
-          path
+        Card {
+          text
           id
+          page {
+            path
+            title
+          }
+          cover {
+            publicURL
+            name
+          }
         }
+        Warning
       }
     }
   }

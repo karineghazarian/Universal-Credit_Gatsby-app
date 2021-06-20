@@ -1,19 +1,26 @@
 import React, { useCallback } from "react"
-import ReactMarkdown from "react-markdown"
 import PropTypes from "prop-types"
 
-const Markdown = ({ markdown }) => {
+import rehypeRaw from "rehype-raw"
+
+import ReactMarkdown from "react-markdown"
+
+const Markdown = React.memo(({ markdown }) => {
   const transformImageUri = useCallback(
     uri =>
       uri.startsWith("http") ? uri : `${process.env.GATSBY_API_URL}${uri}`,
     []
   )
   return (
-    <ReactMarkdown transformImageUri={transformImageUri}>
+    <ReactMarkdown
+      transformImageUri={transformImageUri}
+      skipHtml={false}
+      rehypePlugins={[rehypeRaw]}
+    >
       {markdown}
     </ReactMarkdown>
   )
-}
+})
 
 Markdown.propTypes = {
   markdown: PropTypes.string.isRequired,

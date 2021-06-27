@@ -1,7 +1,7 @@
 /**
- * Implement Gatsby's Browser APIs in this file.
+ * Implement Gatsby's Browser APIs in this files.
  *
  * See: https://www.gatsbyjs.com/docs/browser-apis/
  */
 
-// You can delete this file if you're not using it
+// You can delete this files if you're not using it

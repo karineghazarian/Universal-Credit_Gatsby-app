@@ -20,31 +20,42 @@ const Footer = React.memo(() => {
             }
           }
           markdownRemark {
-            Markdown
+            markdown
           }
-          icons {
-            id
+          footerLogo {
             link
             icon {
               publicURL
+              name
+            }
+          }
+          icons {
+            link
+            icon {
+              publicURL
+              name
             }
           }
         }
       }
     }
   `)
-  const { navbarItems = [], markdownRemark = {}, icons = [] } = footerSelector(
-    data
-  )
+  const {
+    navbarItems = [],
+    markdownRemark,
+    icons = [],
+    footerLogo = {},
+  } = footerSelector(data)
+
   return (
-    <footer>
+    <footer className={styles.footer}>
       © {new Date().getFullYear()}
       <nav>
         <ul className={styles.ul}>
           {navbarItems?.map(link => (
             <li key={link.page.path} className={styles.link}>
               <Link
-                to={`/${link.page.path}`}
+                to={link.page.path}
                 activeClassName={styles.active}
                 title={link.text}
               >
@@ -52,23 +63,30 @@ const Footer = React.memo(() => {
               </Link>
             </li>
           ))}
+          =
         </ul>
       </nav>
-      {markdownRemark && <Markdown markdown={markdownRemark.Markdown} />}
+      {markdownRemark && <Markdown markdown={markdownRemark.markdown} />}
       <ul>
-        {icons?.map(icon => (
-          <li key={icon.id} className={styles.link}>
-            <a
-              href={icon.link}
-              title={icon.link}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src={icon.icon.publicURL} alt={icon.link} />
-            </a>
-          </li>
-        ))}
+        {icons?.map(icon => {
+          const link = icon.link.replace("/", "")
+          const imgSrc = icon.icon.publicURL
+          return (
+            <li key={`${icon.id}-${link}`} className={styles.link}>
+              <a href={link} title={link} target="_blank" rel="noreferrer">
+                <img src={imgSrc} alt={link} />
+              </a>
+            </li>
+          )
+        })}
       </ul>
+      <Link to={footerLogo.link} title={footerLogo.link}>
+        <img
+          src={footerLogo.icon.publicURL}
+          alt={footerLogo.icon.name}
+          style={{ width: "100px" }}
+        />
+      </Link>
     </footer>
   )
 })

@@ -10,19 +10,19 @@ const Header = React.memo(() => {
     query HeaderQuery {
       allStrapiHeader {
         nodes {
+          headerLogo {
+            link
+            icon {
+              publicURL
+              name
+            }
+          }
           navbarItems {
             text
             id
             page {
               path
               title
-            }
-          }
-          logoLink {
-            link
-            icon {
-              publicURL
-              name
             }
           }
           contactPhone {
@@ -34,15 +34,18 @@ const Header = React.memo(() => {
       }
     }
   `)
-  const { navbarItems = [], logoLink = {}, contactPhone = [] } = headerSelector(
-    data
-  )
+  const {
+    navbarItems = [],
+    headerLogo = {},
+    contactPhone = [],
+  } = headerSelector(data)
+
   return (
     <header>
-      <Link to={`/${logoLink.link}`} title={logoLink.link}>
+      <Link to={headerLogo.link} title={headerLogo.link}>
         <img
-          src={logoLink.icon.publicURL}
-          alt={logoLink.icon.name}
+          src={headerLogo.icon.publicURL}
+          alt={headerLogo.icon.name}
           style={{ width: "100px" }}
         />
       </Link>
@@ -51,7 +54,7 @@ const Header = React.memo(() => {
           {navbarItems?.map(link => (
             <li key={link.page.path} className={styles.link}>
               <Link
-                to={`/${link.page.path}`}
+                to={link.page.path}
                 activeClassName={styles.active}
                 title={link.text}
               >

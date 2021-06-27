@@ -41,6 +41,83 @@ Pages.propTypes = {
 
 export default Pages
 
+export const FragmentApplicationItem = graphql`
+  fragment StrapiPageContentApplicationItemFragment on StrapiPageContentApplicationItem {
+    item
+    placeholder
+    type
+    id
+  }
+`
+
+export const FragmentCard = graphql`
+  fragment StrapiPageContentCardFragment on StrapiPageContentCard {
+    id
+    cover {
+      publicURL
+      name
+    }
+    text
+    page {
+      path
+      title
+    }
+  }
+`
+
+export const FragmentCalculator = graphql`
+  fragment StrapiPageContentCalculatorFragment on StrapiPageContentCalculator {
+    id
+    rateSrc
+    title
+  }
+`
+
+export const FragmentFile = graphql`
+  fragment StrapiPageContentFileFragment on StrapiPageContentFile {
+    file {
+      publicURL
+      name
+    }
+    id
+  }
+`
+
+export const FragmentMap = graphql`
+  fragment StrapiPageContentMapFragment on StrapiPageContentMap {
+    src
+  }
+`
+
+export const FragmentMarkdown = graphql`
+  fragment StrapiPageContentMarkdownFragment on StrapiPageContentMarkdown {
+    markdown
+  }
+`
+
+export const FragmentSlide = graphql`
+  fragment StrapiPageContentSlideFragment on StrapiPageContentSlide {
+    id
+    caption
+    cover {
+      publicURL
+      name
+    }
+  }
+`
+
+export const FragmentWarning = graphql`
+  fragment StrapiPageContentWarningFragment on StrapiPageContentWarning {
+    warning
+  }
+`
+
+export const FragmentModalWarning = graphql`
+  fragment StrapiPageContentModalWarningFragment on StrapiPageContentModalWarning {
+    warning
+  }
+`
+
 export const pageQuery = graphql`
   query MyPage($id: String) {
     strapiPage(id: { eq: $id }) {
@@ -48,30 +125,33 @@ export const pageQuery = graphql`
       path
       content {
         id
-        hasCalculator
-        hasMap
-        Markdown
-        Slide {
-          caption
-          id
-          cover {
-            publicURL
-            name
-          }
+        ApplicationItem {
+          ...StrapiPageContentApplicationItemFragment
         }
         Card {
-          text
-          id
-          page {
-            path
-            title
-          }
-          cover {
-            publicURL
-            name
-          }
+          ...StrapiPageContentCardFragment
         }
-        Warning
+        Calculator {
+          ...StrapiPageContentCalculatorFragment
+        }
+        File {
+          ...StrapiPageContentFileFragment
+        }
+        Map {
+          ...StrapiPageContentMapFragment
+        }
+        Markdown {
+          ...StrapiPageContentMarkdownFragment
+        }
+        Slide {
+          ...StrapiPageContentSlideFragment
+        }
+        Warning {
+          ...StrapiPageContentWarningFragment
+        }
+        ModalWarning {
+          ...StrapiPageContentModalWarningFragment
+        }
       }
     }
   }

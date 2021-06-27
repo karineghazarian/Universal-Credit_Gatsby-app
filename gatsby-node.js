@@ -24,22 +24,20 @@ exports.createPages = ({ actions, graphql }) => {
     `
     {
       allStrapiPage {
-        edges {
-          node {
-            id
-            path
-          }
+        nodes {
+          path
+          id
         }
       }
     }
     `
   ).then(result => {
-    const pages = result.data.allStrapiPage.edges
+    const pages = result.data.allStrapiPage.nodes
     const Component = path.resolve("src/page-template/Page.js")
     //  Create pages for each page.
-    pages.forEach(({ node }) => {
+    pages.forEach(node => {
       createPage({
-        path: `/${node.path}`,
+        path: node.path,
         key: node.id,
         component: Component,
         context: {

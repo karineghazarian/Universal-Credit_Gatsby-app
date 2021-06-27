@@ -11,3 +11,9 @@
     display: flex;
     flex: 1;
 }
+
+.footer {
+    background: #424242;
+    color: #fff;
+    padding: 1rem;
+}

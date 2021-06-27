@@ -11,6 +11,7 @@ const Markdown = React.memo(({ markdown }) => {
       uri.startsWith("http") ? uri : `${process.env.GATSBY_API_URL}${uri}`,
     []
   )
+  console.log("Markdown: ", markdown)
   return (
     <ReactMarkdown
       transformImageUri={transformImageUri}

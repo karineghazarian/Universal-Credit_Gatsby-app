@@ -16,7 +16,7 @@ import Footer from "../footer"
 const Layout = ({ children }) => (
   <>
     <Header />
-    <main>{children}</main>
+    <main style={{ backgroundColor: "var(--main-color)" }}>{children}</main>
     <Footer />
   </>
 )

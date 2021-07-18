@@ -7,7 +7,8 @@ import Markdown from "../markdown"
 
 import { footerSelector } from "./selector"
 
-const Footer = React.memo(() => {
+const Footer = React.memo(() =>
+{
   const data = useStaticQuery(graphql`
     query MyFooter {
       allStrapiFooter {
@@ -49,7 +50,6 @@ const Footer = React.memo(() => {
 
   return (
     <footer className={styles.footer}>
-      © {new Date().getFullYear()}
       <nav>
         <ul className={styles.ul}>
           {navbarItems?.map(link => (
@@ -58,35 +58,39 @@ const Footer = React.memo(() => {
                 to={link.page.path}
                 activeClassName={styles.active}
                 title={link.text}
+                className={styles.navbarItem}
               >
                 {link.text}
               </Link>
             </li>
           ))}
-          =
         </ul>
       </nav>
-      {markdownRemark && <Markdown markdown={markdownRemark.markdown} />}
-      <ul>
-        {icons?.map(icon => {
-          const link = icon.link.replace("/", "")
-          const imgSrc = icon.icon.publicURL
-          return (
-            <li key={`${icon.id}-${link}`} className={styles.link}>
-              <a href={link} title={link} target="_blank" rel="noreferrer">
-                <img src={imgSrc} alt={link} />
-              </a>
-            </li>
-          )
-        })}
-      </ul>
-      <Link to={footerLogo.link} title={footerLogo.link}>
-        <img
-          src={footerLogo.icon.publicURL}
-          alt={footerLogo.icon.name}
-          style={{ width: "100px" }}
-        />
-      </Link>
+      {markdownRemark && <Markdown markdown={markdownRemark.markdown} className={styles.footerWarning} />}
+      <div className={styles.footerCopywrite}>
+        <Link to={footerLogo.link} title={footerLogo.link}>
+          <img
+            src={footerLogo.icon.publicURL}
+            alt={footerLogo.icon.name}
+            className={styles.footerLogo}
+          />
+        </Link>
+        <ul className={styles.footerIcons}>
+          {icons?.map(icon =>
+          {
+            const link = icon.link.replace("/", "")
+            const imgSrc = icon.icon.publicURL
+            return (
+              <li key={`${icon.id}-${link}`} className={styles.footerIcon}>
+                <a href={link} title={link} target="_blank" rel="noreferrer">
+                  <img src={imgSrc} alt={link} />
+                </a>
+              </li>
+            )
+          })}
+        </ul>
+        <span>© {new Date().getFullYear()}, Universal Credit</span>
+      </div>
     </footer>
   )
 })

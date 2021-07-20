@@ -34,10 +34,6 @@
     margin-left: 10px;
 }
 
-.active {
-    color: red
-}
-
 .footerWarning {
     padding: 1.5rem 10rem;
     text-align: center;
@@ -85,6 +81,7 @@
 
     .footerWarning {
         padding: 1rem;
+        font-size: 1rem;
     }
     .ul {
         margin-bottom: 1rem;

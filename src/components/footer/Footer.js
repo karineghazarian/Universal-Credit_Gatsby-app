@@ -7,8 +7,7 @@ import Markdown from "../markdown"
 
 import { footerSelector } from "./selector"
 
-const Footer = React.memo(() =>
-{
+const Footer = React.memo(() => {
   const data = useStaticQuery(graphql`
     query MyFooter {
       allStrapiFooter {

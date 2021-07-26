@@ -50,6 +50,13 @@ export const FragmentApplicationItem = graphql`
   }
 `
 
+export const FragmentCalculator = graphql`
+  fragment StrapiPageContentCalculatorFragment on StrapiPageContentCalculator {
+    id
+    rateSrc
+  }
+`
+
 export const FragmentCard = graphql`
   fragment StrapiPageContentCardFragment on StrapiPageContentCard {
     id
@@ -65,21 +72,13 @@ export const FragmentCard = graphql`
   }
 `
 
-export const FragmentCalculator = graphql`
-  fragment StrapiPageContentCalculatorFragment on StrapiPageContentCalculator {
-    id
-    rateSrc
-    title
-  }
-`
-
-export const FragmentFile = graphql`
-  fragment StrapiPageContentFileFragment on StrapiPageContentFile {
+export const FragmentFiles = graphql`
+  fragment StrapiPageContentFilesFragment on StrapiPageContentFiles {
+    text
     file {
       publicURL
       name
     }
-    id
   }
 `
 
@@ -118,6 +117,49 @@ export const FragmentModalWarning = graphql`
   }
 `
 
+export const FragmentYearlyReport = graphql`
+  fragment StrapiPageContentYearlyReportFragment on StrapiPageContentYearlyReport {
+    id
+    date
+    text
+    file {
+      publicURL
+      name
+    }
+  }
+`
+
+export const FragmentQuarterReport = graphql`
+  fragment StrapiPageContentQuarterReportFragment on StrapiPageContentQuarterReport {
+    id
+    date
+    text
+    file {
+      publicURL
+      name
+    }
+  }
+`
+
+export const FragmentRules = graphql`
+  fragment StrapiPageContentRulesFragment on StrapiPageContentRules {
+    file {
+      url
+      name
+    }
+  }
+`
+
+export const FragmentTerms = graphql`
+  fragment StrapiPageContentTermsFragment on StrapiPageContentTerms {
+    text
+    file {
+      publicURL
+      name
+    }
+  }
+`
+
 export const pageQuery = graphql`
   query MyPage($id: String) {
     strapiPage(id: { eq: $id }) {
@@ -125,6 +167,7 @@ export const pageQuery = graphql`
       path
       content {
         id
+        title
         ApplicationItem {
           ...StrapiPageContentApplicationItemFragment
         }
@@ -134,8 +177,8 @@ export const pageQuery = graphql`
         Calculator {
           ...StrapiPageContentCalculatorFragment
         }
-        File {
-          ...StrapiPageContentFileFragment
+        Files {
+          ...StrapiPageContentFilesFragment
         }
         Map {
           ...StrapiPageContentMapFragment
@@ -151,6 +194,18 @@ export const pageQuery = graphql`
         }
         ModalWarning {
           ...StrapiPageContentModalWarningFragment
+        }
+        QuarterReport {
+          ...StrapiPageContentQuarterReportFragment
+        }
+        YearlyReport {
+          ...StrapiPageContentYearlyReportFragment
+        }
+        Rules {
+          ...StrapiPageContentRulesFragment
+        }
+        Terms {
+          ...StrapiPageContentTermsFragment
         }
       }
     }

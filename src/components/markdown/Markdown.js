@@ -5,14 +5,14 @@ import rehypeRaw from "rehype-raw"
 
 import ReactMarkdown from "react-markdown"
 
-const Markdown = React.memo(({ markdown, className }) =>
+const Markdown = React.memo(({ markdown, className, title }) =>
 {
   const transformImageUri = useCallback(
     uri =>
       uri.startsWith("http") ? uri : `${process.env.GATSBY_API_URL}${uri}`,
     []
   )
-  console.log("Markdown: ", markdown)
+
   return (
     <ReactMarkdown
       transformImageUri={transformImageUri}
@@ -25,13 +25,15 @@ const Markdown = React.memo(({ markdown, className }) =>
   )
 })
 
-Markdown.defaultPropTypes = {
-  className: ""
+Markdown.defaultProps = {
+  className: "",
+  title: ""
 }
 
 Markdown.propTypes = {
   markdown: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired
+  className: PropTypes.string,
+  title: PropTypes.string
 }
 
 export default Markdown

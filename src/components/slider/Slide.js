@@ -12,7 +12,7 @@ const Slide = React.memo(({ slide }) =>
   return (
     <div>
       <GatsbyImage image={image} alt={slide.caption} className="slider-image" />
-      <p>{slide.caption}</p>
+      <h1 className={styles.slideCaption}>{slide.caption}</h1>
     </div>
   )
 

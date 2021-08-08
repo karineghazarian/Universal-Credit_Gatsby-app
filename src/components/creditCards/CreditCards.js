@@ -15,7 +15,10 @@ const CreditCards = React.memo(({ cards, title }) =>
         return (
           <Link className={styles.card} to={card.page.path} title={card.text}>
             <div>
-              <GatsbyImage image={image} alt="hle vor" className={styles.creditCardImg} />
+              <div style={{ overflow: 'hidden' }}>
+                <GatsbyImage image={image} alt="hle vor" className={styles.creditCardImg} />
+              </div>
+
               <div className={styles.creditCardTitle}>{card.text}</div>
             </div>
           </Link>

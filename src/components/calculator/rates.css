@@ -1,0 +1,8 @@
+ #rate-widget {
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-transform: translateY(50%);
+    transform: translateY(50%);
+    box-shadow: 0 2px 7px 0 rgb(60 64 67 / 30%), 0 2px 12px 5px rgb(60 64 67 / 15%);
+  }

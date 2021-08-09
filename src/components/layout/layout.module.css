@@ -47,4 +47,17 @@ iframe {
     margin-bottom: 1.45rem;
   }
 
-
+button {
+    display: inline-block;
+    padding: .3rem .5rem;
+    background-color: #388e3c;
+    border: 0;
+    outline: 0;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    -webkit-transition: all .7s cubic-bezier(.19,.99,.19,.99);
+    transition: all .7s cubic-bezier(.19,.99,.19,.99);
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+    position: relative;
+}

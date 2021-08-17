@@ -2,70 +2,11 @@ import React, { useState, useEffect } from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import * as styles from "./header.module.css"
 import { headerSelector } from "./selector"
+import "./style.css"
+import Animated from "../Animated";
 
-const Header = React.memo(() =>
+const Header = () =>
 {
-  const [hamburger, setHamburger] = useState(false);
-  const [show, setShow] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [rotate, setRotate] = useState(null);
-
-  const onResize = () =>
-  {
-    const isSmall = window.innerWidth <= 1020;
-    if (!hamburger)
-    {
-      setHamburger(isSmall)
-      setShow(!isSmall);
-      setRotate(false);
-    }
-  }
-
-  useEffect(() =>
-  {
-    const isSmall = window.innerWidth <= 1020;
-    setHamburger(isSmall);
-    setShow(!isSmall);
-    window.addEventListener("resize", onResize);
-  }, [])
-
-  useEffect(() =>
-  {
-    let timeout
-    if (timeout)
-    {
-      clearTimeout(timeout)
-    }
-    if (open)
-    {
-      timeout = setTimeout(() =>
-      {
-        setShow(false);
-        setOpen(false)
-      }, 700);
-    }
-    return () =>
-    {
-      clearTimeout(timeout);
-    }
-  }, [open])
-
-  const toggleIcon = () =>
-  {
-    setRotate(!rotate)
-  }
-
-  const toggleMenu = (e) =>
-  {
-    toggleIcon();
-    if (show)
-    {
-      setOpen(!open)
-    } else
-    {
-      setShow(true)
-    }
-  }
   const data = useStaticQuery(graphql`
     query HeaderQuery {
       allStrapiHeader {
@@ -100,16 +41,105 @@ const Header = React.memo(() =>
     contactPhone = [],
   } = headerSelector(data);
 
+  const [hamburger, setHamburger] = useState(false);
+  const [show, setShow] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [rotate, setRotate] = useState(null);
+
+  const onResize = () =>
+  {
+    const isSmall = window.innerWidth <= 1020;
+    if (!hamburger)
+    {
+      setHamburger(isSmall)
+      setShow(!isSmall);
+      setRotate(false);
+    }
+  }
+
+  const toggleIcon = () =>
+  {
+    setRotate(!rotate)
+  }
+
+  const toggleMenu = (e) =>
+  {
+    toggleIcon();
+    if (show)
+    {
+      setOpen(!open)
+    } else
+    {
+      setShow(true)
+    }
+  }
+
+  useEffect(() =>
+  {
+    const isSmall = window.innerWidth <= 1020;
+    setHamburger(isSmall);
+    setShow(!isSmall);
+    window.addEventListener("resize", onResize);
+
+  }, [onResize])
+
+  useEffect(() =>
+  {
+    let timeoutId
+    if (timeoutId)
+    {
+      clearTimeout(timeoutId)
+    }
+    if (open)
+    {
+      timeoutId = setTimeout(() =>
+      {
+        setShow(false);
+        setOpen(false)
+      }, 700);
+    }
+    return () =>
+    {
+      clearTimeout(timeoutId);
+    }
+  }, [open])
+
+  console.log({open, show, hamburger})
   return (
-    <header className={hamburger ? styles.headerMain : styles.headerSection}>
+    <header className={hamburger ?  "headerMain" : styles.headerSection}>
       {hamburger &&
-        <span tabIndex={0}
-          className={rotate ?
-            `${styles.menuBtn} ${styles.btnClicked}`
-            : `${styles.menuBtn} ${styles.btnUnClicked}`}
-          onClick={toggleMenu}>
-          <i className={rotate ? styles.iconClose : styles.iconMenu} />
-        </span>}
+        <span
+          tabIndex={0}
+          className={rotate ? "menuBtn btnClicked" : "menuBtn btnUnClicked"}
+          onClick={toggleMenu}
+        >
+           <i className={rotate ? "icon-close" : "icon-menu"} />
+        </span>
+      }
+      {hamburger && show && (
+        <Animated
+            from={{transform: "translateX(-100%)"}}
+            to={{transform: "translateX(0%)"}}
+            inverse={open}
+          >
+          {
+            style => (
+              <header style={style}>
+                <Link to="/" className="logo" />
+                <Link to="/about" activeClassName="active">ՄԵՐ ՄԱՍԻՆ</Link>
+                <Link to="/credits" activeClassName="active" partiallyActive>ՎԱՐԿԵՐ</Link>
+                <Link to="/careers" activeClassName="active">ԹԱՓՈՒՐ ԱՇԽԱՏԱՏԵՂԵՐ</Link>
+                <Link to="/reports" activeClassName="active">ՀԱՇՎԵՏՎՈՒԹՅՈՒՆՆԵՐ</Link>
+                <Link to="/contact-us" activeClassName="active">ՀԵՏԱԴԱՐՁ ԿԱՊ</Link>
+                <div>
+                  <a href="tel:+374 10 57 35 47">(+374) 10 57 35 47</a>
+                  <a href="tel:+374 10 57 56 61">(+374) 10 57 56 61</a>
+                </div>
+              </header>
+            )
+          }
+        </Animated>
+      )}
       <Link to={headerLogo.link} title={headerLogo.link}>
         <img
           src={headerLogo.icon.publicURL}
@@ -117,7 +147,6 @@ const Header = React.memo(() =>
           className={styles.headerLogo}
         />
       </Link>
-      <span style={{ flex: 1, padding: "1rem", fontSize: "1rem" }} />
       <nav className={styles.headerNavbar}>
         {navbarItems?.map(link => link.page.path !== "/home" && (
           <Link
@@ -145,6 +174,8 @@ const Header = React.memo(() =>
       </div>
     </header>
   )
-})
+}
 
-export default Header
+export default React.memo(Header);
+
+Header.displayName = 'Header'

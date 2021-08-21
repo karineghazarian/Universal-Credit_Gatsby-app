@@ -160,6 +160,14 @@ export const FragmentTerms = graphql`
   }
 `
 
+export const FragmentLeaders = graphql`
+  fragment StrapiPageContentLeadersFragment on StrapiPageContentLeaders {
+    markdown
+    name
+    title
+  }
+`
+
 export const pageQuery = graphql`
   query MyPage($id: String) {
     strapiPage(id: { eq: $id }) {
@@ -206,6 +214,9 @@ export const pageQuery = graphql`
         }
         Terms {
           ...StrapiPageContentTermsFragment
+        }
+        Leaders {
+          ...StrapiPageContentLeadersFragment
         }
       }
     }

@@ -14,6 +14,7 @@ import QuarterReport from "../quarterReport/QuarterReport"
 import YearlyReport from "../yearlyReport/YearlyReport"
 import Rules from "../rules/Rules"
 import Terms from "../terms/Terms"
+import Leaders from "../leaders"
 
 const CONTENT = {
   SLIDE: "Slide",
@@ -29,6 +30,7 @@ const CONTENT = {
   YEARLY_REPORT: "YearlyReport",
   RULES: "Rules",
   TERMS: "Terms",
+  LEADERS: 'Leaders'
 }
 
 const DynamicContent = React.memo(({ content }) => {
@@ -169,6 +171,16 @@ const DynamicContent = React.memo(({ content }) => {
            }
          })
          break;
+      case CONTENT.LEADERS:
+        components.push({
+          Component: Leaders,
+          props: {
+            key,
+            leaders: value,
+            title: content.title
+          }
+        })
+        break;
        default:
          break;
     }
@@ -197,6 +209,7 @@ DynamicContent.propTypes = {
     File: PropTypes.array,
     QuarterReport: PropTypes.array,
     YearlyReport: PropTypes.array,
+    Leaders: PropTypes.array
   }).isRequired,
 }
 

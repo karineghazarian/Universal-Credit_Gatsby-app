@@ -10,8 +10,6 @@ const ModalWarning = React.memo(({ modalWarning, title }) => (
   </div>
 ))
 
-
-
 ModalWarning.defaultProps = {
   title: ""
 }

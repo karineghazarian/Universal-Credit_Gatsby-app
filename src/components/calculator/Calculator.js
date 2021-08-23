@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import PropTypes from "prop-types"
-import Rates from "./Rates";
-import * as styles from "./calculator.module.css";
+import Rates from "./Rates"
+import * as styles from "./Calculator.module.css"
 
 function Calculator(props)
 {
@@ -68,7 +68,7 @@ function Calculator(props)
 
   return (
     <div className={styles.calculator}>
-      <h2>{title}</h2>
+      <h2 style={{ "marginTop": 65 }}>{title}</h2>
       <form onSubmit={calculate}>
         <div>
           <label>Վարկի գումար:</label>
@@ -111,3 +111,5 @@ Calculator.propTypes = {
 }
 
 export default Calculator
+
+Calculator.displayName = 'Calculator';

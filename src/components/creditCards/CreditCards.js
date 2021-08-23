@@ -1,8 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import * as styles from "./creditCards.module.css"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import * as styles from "./CreditCards.module.css"
 
 const CreditCards = React.memo(({ cards, title }) =>
 (
@@ -38,3 +38,5 @@ CreditCards.propTypes = {
 }
 
 export default CreditCards
+
+CreditCards.displayName = 'CreditCards'

@@ -2,13 +2,14 @@ import React from "react"
 import PropTypes from "prop-types"
 import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
-import DynamicContent from "../components/dynamicContent"
-import Seo from "../components/seo"
+import Layout from "../components/layout/Layout"
+import DynamicContent from "../components/DynamicContent/DynamicContent"
+import Seo from "../components/seo/Seo"
 
 import { pageSelector } from "./selector"
 
-const Pages = ({ data }) => {
+const Pages = ({ data }) =>
+{
   const { title, content: contentArray } = pageSelector(data)
   return data ? (
     <Layout>
@@ -61,8 +62,11 @@ export const FragmentCard = graphql`
   fragment StrapiPageContentCardFragment on StrapiPageContentCard {
     id
     cover {
-      publicURL
-      name
+      childImageSharp {
+        gatsbyImageData(
+          placeholder: BLURRED
+        )
+      }
     }
     text
     page {
@@ -73,13 +77,13 @@ export const FragmentCard = graphql`
 `
 
 export const FragmentFiles = graphql`
-  fragment StrapiPageContentFilesFragment on StrapiPageContentFiles {
-    text
-    file {
-      publicURL
-      name
-    }
+fragment StrapiPageContentFilesFragment on StrapiPageContentFiles {
+  text
+  file {
+    name
+    publicURL
   }
+}
 `
 
 export const FragmentMap = graphql`
@@ -98,9 +102,13 @@ export const FragmentSlide = graphql`
   fragment StrapiPageContentSlideFragment on StrapiPageContentSlide {
     id
     caption
+    link
     cover {
-      publicURL
-      name
+      childImageSharp {
+        gatsbyImageData(
+          placeholder: BLURRED
+        )
+      }
     }
   }
 `
@@ -120,7 +128,7 @@ export const FragmentModalWarning = graphql`
 export const FragmentYearlyReport = graphql`
   fragment StrapiPageContentYearlyReportFragment on StrapiPageContentYearlyReport {
     id
-    date
+    year
     text
     file {
       publicURL
@@ -132,11 +140,13 @@ export const FragmentYearlyReport = graphql`
 export const FragmentQuarterReport = graphql`
   fragment StrapiPageContentQuarterReportFragment on StrapiPageContentQuarterReport {
     id
-    date
+    year
+    month
     text
     file {
       publicURL
       name
+      ext
     }
   }
 `
@@ -144,7 +154,7 @@ export const FragmentQuarterReport = graphql`
 export const FragmentRules = graphql`
   fragment StrapiPageContentRulesFragment on StrapiPageContentRules {
     file {
-      url
+      publicURL
       name
     }
   }
@@ -168,6 +178,19 @@ export const FragmentLeaders = graphql`
   }
 `
 
+export const FragmentLicense = graphql`
+fragment StrapiPageContentLicenseFragment on StrapiPageContentLicense {
+  image {
+    name
+    childImageSharp {
+      gatsbyImageData(
+        placeholder: BLURRED
+      )
+    }
+  }
+}
+`
+
 export const pageQuery = graphql`
   query MyPage($id: String) {
     strapiPage(id: { eq: $id }) {
@@ -176,20 +199,17 @@ export const pageQuery = graphql`
       content {
         id
         title
-        ApplicationItem {
-          ...StrapiPageContentApplicationItemFragment
-        }
-        Card {
-          ...StrapiPageContentCardFragment
-        }
         Calculator {
           ...StrapiPageContentCalculatorFragment
         }
-        Files {
-          ...StrapiPageContentFilesFragment
+        ApplicationItem {
+          ...StrapiPageContentApplicationItemFragment
         }
         Map {
           ...StrapiPageContentMapFragment
+        }
+        Card {
+          ...StrapiPageContentCardFragment
         }
         Markdown {
           ...StrapiPageContentMarkdownFragment
@@ -206,17 +226,23 @@ export const pageQuery = graphql`
         QuarterReport {
           ...StrapiPageContentQuarterReportFragment
         }
+        Files {
+          ...StrapiPageContentFilesFragment
+        }
         YearlyReport {
           ...StrapiPageContentYearlyReportFragment
         }
-        Rules {
-          ...StrapiPageContentRulesFragment
+        License {
+          ...StrapiPageContentLicenseFragment
+        }
+        Leaders {
+          ...StrapiPageContentLeadersFragment
         }
         Terms {
           ...StrapiPageContentTermsFragment
         }
-        Leaders {
-          ...StrapiPageContentLeadersFragment
+        Rules {
+          ...StrapiPageContentRulesFragment
         }
       }
     }

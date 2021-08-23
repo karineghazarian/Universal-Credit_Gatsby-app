@@ -1,19 +1,23 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import Markdown from "../markdown";
+import Markdown from "../Markdown/Markdown";
 
-const Leaders = ({ leaders, title }) => (
+const Leaders = ({ leaders, title }) =>
+{
+  console.log(leaders)
+  return (
     <div>
       {title && <p>{title}</p>}
       {leaders.map(leader => (
         <div key={leader.title}>
           {leader.title && <p>{leader.title}</p>}
           {leader.name && <p>{leader.name}</p>}
-          <Markdown markdown={leader.markdown}/>
+          <Markdown markdown={leader.markdown} />
         </div>
       ))}
     </div>
-  )
+  );
+}
 
 
 Leaders.defaultProps = {

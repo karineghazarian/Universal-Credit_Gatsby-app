@@ -93,6 +93,9 @@
   }
 
   @media screen and (max-width: 650px) { 
+    .calculator form {
+      margin-top: 100px;
+    }
     .calculator label {
       display: inline-block;
       width: 150px;
@@ -103,5 +106,8 @@
     }
     select {
       font-size: 0.8rem;
+    }
+    .calculator form > div, .requestModal form .input-container > div {
+      flex-direction: column;
     }
 }

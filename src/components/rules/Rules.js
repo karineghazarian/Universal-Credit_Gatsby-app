@@ -1,11 +1,13 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-const Rules = React.memo(({ rules, title }) => 
-  // console.log(title, rules)
-
-   <div>Rules</div>
-)
+const Rules = ({ rules, title }) =>
+{
+  console.log(title, rules)
+  return (
+    <div>rules</div >
+  )
+}
 
 Rules.defaultProps = {
   title: "",
@@ -22,4 +24,6 @@ Rules.propTypes = {
   }),
 }
 
-export default Rules
+export default React.memo(Rules);
+
+Rules.displayName = 'Rules'

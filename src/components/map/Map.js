@@ -2,7 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 
 const Map = React.memo(({ src, title }) => (
-  // console.log("Map: ", src)
   <iframe
     src={src}
     width="100%"
@@ -24,3 +23,6 @@ Map.propTypes = {
 }
 
 export default Map
+
+Map.displayName = 'Map'
+

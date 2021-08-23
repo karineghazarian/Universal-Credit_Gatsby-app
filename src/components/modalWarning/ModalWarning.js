@@ -1,14 +1,29 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Markdown from "../markdown"
+import Markdown from "../Markdown/Markdown"
+import ModalPortal from "../ModalPortal/ModalPortal"
 
-const ModalWarning = React.memo(({ modalWarning, title }) => (
-  //  console.log("ModalWarning: ", modalWarning)
-  <div>
-    {title}
-    <Markdown markdown={modalWarning} />
-  </div>
-))
+const ModalWarning = ({ modalWarning, title }) =>
+{
+  const [showModal, setShowModal] = React.useState(true);
+
+  React.useEffect(() =>
+  {
+    window.setTimeout(() =>
+    {
+      setShowModal(false);
+    }, 10 * 1000)
+  }, [])
+
+  return showModal ?
+    <ModalPortal header={title} onClose={() => setShowModal(false)}
+    >
+      <div>
+        <Markdown markdown={modalWarning} />
+      </div>
+    </ModalPortal>
+    : null
+}
 
 ModalWarning.defaultProps = {
   title: ""
@@ -19,4 +34,7 @@ ModalWarning.propTypes = {
   title: PropTypes.string
 }
 
-export default ModalWarning
+export default React.memo(ModalWarning)
+
+ModalWarning.displayName = 'ModalWarning'
+

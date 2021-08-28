@@ -46,6 +46,10 @@ const Header = () =>
   const [open, setOpen] = useState(false);
   const [rotate, setRotate] = useState(null);
 
+  const navContainerRef = React.useRef();
+  const navRef = React.useRef();
+  const timeoutIdRef = React.useRef();
+
   const onResize = () =>
   {
     const isSmall = window.innerWidth <= 1020;
@@ -85,14 +89,14 @@ const Header = () =>
 
   useEffect(() =>
   {
-    let timeoutId
-    if (timeoutId)
+
+    if (timeoutIdRef.current)
     {
-      clearTimeout(timeoutId)
+      clearTimeout(timeoutIdRef.current)
     }
     if (open)
     {
-      timeoutId = setTimeout(() =>
+      timeoutIdRef.current = setTimeout(() =>
       {
         setShow(false);
         setOpen(false)
@@ -100,11 +104,10 @@ const Header = () =>
     }
     return () =>
     {
-      clearTimeout(timeoutId);
+      clearTimeout(timeoutIdRef.current);
     }
   }, [open])
 
-  console.log({open, show, hamburger})
   return (
     <header className={hamburger ?  "headerMain" : styles.headerSection}>
       {hamburger &&
@@ -147,18 +150,25 @@ const Header = () =>
           className={styles.headerLogo}
         />
       </Link>
-      <nav className={styles.headerNavbar}>
-        {navbarItems?.map(link => link.page.path !== "/home" && (
-          <Link
-            to={link.page.path}
-            title={link.text}
-            className={styles.link}
-            activeClassName={styles.active}
-          >
-            {link.text}
-          </Link>
-        ))}
-      </nav>
+      <div ref={navContainerRef}
+           style={{
+             overflowX: 'auto',
+             boxShadow: navRef.current?.offsetWidth > navContainerRef.current?.offsetWidth ? "inset 0 2px 5px 0 rgba(0, 0, 0, 0.14)" : "none"
+           }}
+      >
+        <nav className={styles.headerNavbar} ref={navRef}>
+          {navbarItems?.map(link => link.page.path !== "/home" && (
+            <Link
+              to={link.page.path}
+              title={link.text}
+              className={styles.link}
+              activeClassName={styles.active}
+            >
+              {link.text}
+            </Link>
+          ))}
+        </nav>
+      </div>
       <div className={styles.contactPhoneContainer}>
         {contactPhone?.map(phone => (
           <a

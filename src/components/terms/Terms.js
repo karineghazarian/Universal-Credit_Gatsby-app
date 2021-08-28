@@ -1,11 +1,13 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-const Terms = React.memo(({ terms, title }) => 
-  // console.log(title, terms)
-
-   <div>Terms</div>
-)
+const Terms = ({ terms, title }) =>
+{
+  console.log(title, terms)
+  return (
+    <div>Terms</div>
+  )
+}
 
 Terms.defaultProps = {
   title: "",
@@ -17,4 +19,6 @@ Terms.propTypes = {
   terms: PropTypes.array,
 }
 
-export default Terms
+export default React.memo(Terms)
+
+Terms.displayName = 'Terms'

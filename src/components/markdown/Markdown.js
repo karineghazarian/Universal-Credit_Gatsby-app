@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 import rehypeRaw from "rehype-raw"
 
 import ReactMarkdown from "react-markdown"
+import * as styles from "./Markdown.module.css";
 
 const Markdown = React.memo(({ markdown, className, title }) =>
 {
@@ -18,7 +19,8 @@ const Markdown = React.memo(({ markdown, className, title }) =>
       transformImageUri={transformImageUri}
       skipHtml={false}
       rehypePlugins={[rehypeRaw]}
-      className={className}
+      className={`${className} ${styles.reactMarkDown}`}
+      style={{ padding: "2rem, 5rem" }}
     >
       {markdown}
     </ReactMarkdown>
@@ -37,3 +39,5 @@ Markdown.propTypes = {
 }
 
 export default Markdown
+
+Markdown.displayName = 'Markdown';

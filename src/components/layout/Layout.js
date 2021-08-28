@@ -7,16 +7,20 @@
 
 import React from "react"
 import PropTypes from "prop-types"
+import { Helmet } from "react-helmet"
 
-import "./layout.module.css"
+import "./Layout.module.css"
 
-import Header from "../header"
-import Footer from "../footer"
+import Header from "../Header/Header"
+import Footer from "../Footer/Footer"
 
 const Layout = ({ children }) => (
   <>
+    <Helmet>
+      <script src="//code.jivosite.com/widget/J1pQ8q6Oqr" async />
+    </Helmet>
     <Header />
-    <main style={{ backgroundColor: "var(--main-color)" }}>{children}</main>
+    <main style={{ backgroundColor: "var(--main-color)", paddingTop: 150 }}>{children}</main>
     <Footer />
   </>
 )

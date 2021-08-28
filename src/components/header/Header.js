@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
-import * as styles from "./header.module.css"
+import * as styles from "./Header.module.css"
 import { headerSelector } from "./selector"
 import "./style.css"
 import Animated from "../Animated";

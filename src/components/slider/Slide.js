@@ -1,26 +1,23 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import * as styles from "./slide.module.css"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import * as styles from "./Slide.module.css"
 
-
-const Slide = React.memo(({ slide }) =>
+const Slide = ({ slide }) =>
 {
-  console.log(slide, "slide!");
   const image = getImage(slide.cover)
-
   return (
-    <div>
+    <div className={styles.slideContainer}>
       <GatsbyImage image={image} alt={slide.caption} className="slider-image" />
       <h1 className={styles.slideCaption}>{slide.caption}</h1>
     </div>
   )
-
-})
+}
 
 Slide.propTypes = {
   slide: PropTypes.shape({
     caption: PropTypes.string.isRequired,
+    link: PropTypes.string,
     id: PropTypes.number.isRequired,
     cover: PropTypes.shape({
       publicURL: PropTypes.string.isRequired,
@@ -29,14 +26,6 @@ Slide.propTypes = {
   }).isRequired,
 }
 
-export default Slide
-/*
-Slide {
-  id
-  caption
-  cover {
-    publicURL
-    name
-  }
-}
- */
+export default React.memo(Slide)
+
+Slide.displayName = 'Slide'

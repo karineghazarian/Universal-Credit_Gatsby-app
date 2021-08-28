@@ -1,31 +1,65 @@
 import React from "react"
 import PropTypes from "prop-types"
+import ReportItem from "../Report/ReportItem"
 
-const Report = ({ report: { file, text, date } }) => (
-  <div>
-    {date} {text} / {file.publicURL}
-  </div>
-)
+const QuarterReport = ({ reports, title }) =>
+{
+  function getReportsOfTheYear(r, year)
+  {
+    return r.filter((report) => report.year === year);
+  }
 
-Report.propTypes = {
-  report: PropTypes.shape({
-    date: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
-    file: PropTypes.shape({
-      publicURL: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
+  function getReportsOfTheMonth(r, month)
+  {
+    return r.filter((report) => report.month === month);
+  }
+
+  const years = Array.from(new Set(reports.map(report => report.year)));
+
+  const structuredReports = [];
+  years?.forEach(year =>
+  {
+    const yearFilteredReports = getReportsOfTheYear(reports, year);
+    const months = Array.from(new Set(yearFilteredReports.map(report => report.month)));
+    structuredReports.push({
+      year: year.replace("year_", ""),
+      months: months.map((month) =>
+      {
+        const monthFilteredReports = getReportsOfTheMonth(yearFilteredReports, month);
+        return {
+          name: month,
+          docs: monthFilteredReports.map(filteredReport => ({
+            name: filteredReport.text,
+            file: filteredReport.file,
+          }))
+        }
+      })
+    })
+  })
+
+  return (
+    <div>
+      <div>{title}</div>
+      {
+        structuredReports.map((report) => ({
+          ...report,
+          months: [...report.months.reverse().map((month) => ({
+            ...month,
+            docs: [...month.docs.reverse()]
+          }))]
+        })).map((report, i) => (
+          <ReportItem
+            key={report.year + i}
+            title={`${report.year} ՀԱՇՎԵՏՎՈՒԹՅՈՒՆՆԵՐ /միջանկյալ ֆինանսական/`}
+            year={report.year}
+            months={report.months}
+            type="monthly"
+          />
+        ))
+      }
+    </div>
+  )
 }
-
-const QuarterReport = React.memo(({ reports, title }) => (
-  <div>
-    <h1>{title}</h1>
-    {reports.map(report => (
-      <Report key={report.id} report={report} />
-    ))}
-  </div>
-))
 
 QuarterReport.defaultProps = {
   title: "",
@@ -37,4 +71,6 @@ QuarterReport.propTypes = {
   reports: PropTypes.array,
 }
 
-export default QuarterReport
+export default React.memo(QuarterReport);
+
+QuarterReport.displayName = 'QuarterReport'

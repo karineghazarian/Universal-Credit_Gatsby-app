@@ -1,31 +1,34 @@
 import React from "react"
 import PropTypes from "prop-types"
+import ReportItem from "../Report/ReportItem";
 
-const Report = ({ report: { file, text, date } }) => (
-  <div>
-    {date} {text} / {file.publicURL}
-  </div>
-)
 
-Report.propTypes = {
-  report: PropTypes.shape({
-    date: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
-    file: PropTypes.shape({
-      publicURL: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
+
+const YearlyReport = ({ reports, title }) =>
+{
+  const structuredReports = reports.map(report => ({
+    year: report.year?.replace("year_", "") || '--',
+    name: report.text,
+    file: report.file
+  }));
+
+  return (
+    <div>
+      <div>{title}</div>
+      {
+        structuredReports.map((report, i) => (
+          <ReportItem
+            key={report.year + i}
+            title="ՏԱՐԵԿԱՆ ՖԻՆԱՆՍԱԿԱՆ ՀԱՇՎԵՏՎՈՒԹՅՈՒՆՆԵՐ"
+            yearlyReports={structuredReports}
+            type="yearly"
+          />
+        ))
+      }
+    </div>
+  )
 }
 
-const YearlyReport = React.memo(({ reports, title }) => (
-  <div>
-    <h1>{title}</h1>
-    {reports.map(report => (
-      <Report key={report.id} report={report} />
-    ))}
-  </div>
-))
 
 YearlyReport.defaultProps = {
   title: "",
@@ -37,4 +40,6 @@ YearlyReport.propTypes = {
   reports: PropTypes.array,
 }
 
-export default YearlyReport
+export default React.memo(YearlyReport);
+
+YearlyReport.displayName = 'YearlyReport'

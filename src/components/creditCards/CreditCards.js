@@ -1,8 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import * as styles from "./creditCards.module.css"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import * as styles from "./CreditCards.module.css"
 
 const CreditCards = React.memo(({ cards, title }) =>
 (
@@ -15,7 +15,10 @@ const CreditCards = React.memo(({ cards, title }) =>
         return (
           <Link className={styles.card} to={card.page.path} title={card.text}>
             <div>
-              <GatsbyImage image={image} alt="hle vor" className={styles.creditCardImg} />
+              <div style={{ overflow: 'hidden' }}>
+                <GatsbyImage image={image} alt="hle vor" className={styles.creditCardImg} />
+              </div>
+
               <div className={styles.creditCardTitle}>{card.text}</div>
             </div>
           </Link>
@@ -35,3 +38,5 @@ CreditCards.propTypes = {
 }
 
 export default CreditCards
+
+CreditCards.displayName = 'CreditCards'

@@ -1,0 +1,13 @@
+.licenseContainer {
+padding: 6rem;
+}
+
+.licenseImagesContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.licenseImage:first-child  {
+    margin-right: 50px;
+}
+

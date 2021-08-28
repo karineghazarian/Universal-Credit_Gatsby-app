@@ -1,13 +1,14 @@
 import React from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 
-import * as styles from "./footer.module.css"
+import * as styles from "./Footer.module.css"
 
-import Markdown from "../markdown"
+import Markdown from "../Markdown/Markdown"
 
 import { footerSelector } from "./selector"
 
-const Footer = React.memo(() => {
+const Footer = React.memo(() =>
+{
   const data = useStaticQuery(graphql`
     query MyFooter {
       allStrapiFooter {

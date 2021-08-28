@@ -1,14 +1,15 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Markdown from "../markdown"
+import Markdown from "../Markdown/Markdown"
+import * as styles from "./Warning.module.css"
 
-const Warning = React.memo(({ warning, title }) => (
-  // console.log("Warning: ", warning)
-  <div>
-    {title}
+const Warning = ({ warning, title }) =>
+(
+  <div className={`${styles.warning} container`}>
+    <strong>{title}</strong>
     <Markdown markdown={warning} />
   </div>
-))
+)
 
 Warning.defaultProps = {
   title: ""
@@ -19,4 +20,6 @@ Warning.propTypes = {
   title: PropTypes.string
 }
 
-export default Warning
+export default React.memo(Warning)
+
+Warning.displayName = 'Warning';

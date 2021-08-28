@@ -16,8 +16,9 @@
 }
 
 .headerNavbar {
-    display: flex;
+    display: inline-flex;
     flex: 1;
+    padding: 0px 2px;
 }
 
 .contactPhone {
@@ -50,44 +51,6 @@
 .active {
     color: #fff;
     background: #999;
-}
-
-.headerMain {
-    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
-    position: fixed;
-    z-index: 20;
-    background: #fff;
-    width: 100%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-}
-
-.headerMain span i {
-    color: #303E48;
-}
-
-.menuBtn {
-    transition: all .3s ease-out;
-    display: inline-block;
-    margin-left: 20px;
-    cursor: pointer;
-}
-
-.menuBtn:focus {
-    outline: none;
-}
-
-.headerMain .btnClicked {
-    transform: rotate(90deg)
-}
-
-.headerMain .iconClose {
-    font-size: 22px;
-}
-
-.headerMain .iconMenu {
-    font-size: 24px;
 }
 
 @media only screen and (max-width: 1500px) {

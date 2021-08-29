@@ -7,7 +7,7 @@ const Warning = ({ warning, title }) =>
 (
   <div className={`${styles.warning} container`}>
     <strong>{title}</strong>
-    <Markdown markdown={warning} />
+    <Markdown markdown={warning} className={styles.warningContainer} />
   </div>
 )
 

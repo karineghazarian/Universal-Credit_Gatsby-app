@@ -2,16 +2,18 @@ import React from 'react';
 import PropTypes from "prop-types";
 import Markdown from "../Markdown/Markdown";
 
+import * as styles from "./Leaders.module.css"
+
 const Leaders = ({ leaders, title }) =>
 {
   console.log(leaders)
   return (
-    <div>
+    <div className={styles.leadersContainer}>
       {title && <p>{title}</p>}
       {leaders.map(leader => (
-        <div key={leader.title}>
-          {leader.title && <p>{leader.title}</p>}
-          {leader.name && <p>{leader.name}</p>}
+        <div key={leader.title} className={styles.leadsContainer}>
+          {leader.title && <h2>{leader.title}</h2>}
+          {leader.name && <h3>{leader.name}</h3>}
           <Markdown markdown={leader.markdown} />
         </div>
       ))}

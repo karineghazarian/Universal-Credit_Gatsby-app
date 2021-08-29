@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import ReportItem from "../Report/ReportItem";
 
-
+import * as styles from "./YearlyReport.module.css";
 
 const YearlyReport = ({ reports, title }) =>
 {
@@ -13,8 +13,8 @@ const YearlyReport = ({ reports, title }) =>
   }));
 
   return (
-    <div>
-      <div>{title}</div>
+    <div className={styles.yearlyReportContainer}>
+      <h2 style={{ maxWidth: "unset" }}>{title}</h2>
       {
         structuredReports.map((report, i) => (
           <ReportItem

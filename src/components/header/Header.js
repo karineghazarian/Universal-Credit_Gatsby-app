@@ -109,22 +109,22 @@ const Header = () =>
   }, [open])
 
   return (
-    <header className={hamburger ?  "headerMain" : styles.headerSection}>
+    <header className={hamburger ? "headerMain" : styles.headerSection}>
       {hamburger &&
         <span
           tabIndex={0}
           className={rotate ? "menuBtn btnClicked" : "menuBtn btnUnClicked"}
           onClick={toggleMenu}
         >
-           <i className={rotate ? "icon-close" : "icon-menu"} />
+          <i className={rotate ? "icon-close" : "icon-menu"} />
         </span>
       }
       {hamburger && show && (
         <Animated
-            from={{transform: "translateX(-100%)"}}
-            to={{transform: "translateX(0%)"}}
-            inverse={open}
-          >
+          from={{ transform: "translateX(-100%)" }}
+          to={{ transform: "translateX(0%)" }}
+          inverse={open}
+        >
           {
             style => (
               <header style={style}>
@@ -151,10 +151,10 @@ const Header = () =>
         />
       </Link>
       <div ref={navContainerRef}
-           style={{
-             overflowX: 'auto',
-             boxShadow: navRef.current?.offsetWidth > navContainerRef.current?.offsetWidth ? "inset 0 2px 5px 0 rgba(0, 0, 0, 0.14)" : "none"
-           }}
+        style={{
+          overflowX: 'auto',
+          boxShadow: navRef.current?.offsetWidth > navContainerRef.current?.offsetWidth ? "inset 0 2px 5px 0 rgba(0, 0, 0, 0.14)" : "none"
+        }}
       >
         <nav className={styles.headerNavbar} ref={navRef}>
           {navbarItems?.map(link => link.page.path !== "/home" && (

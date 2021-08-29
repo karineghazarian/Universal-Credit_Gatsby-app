@@ -5,6 +5,8 @@ import FileSaver from "file-saver";
 import Animated from "../Animated";
 import ReportMonth from './ReportMonth';
 
+import "./ReportItem.css";
+
 
 function ReportItem({ months, yearlyReports, type, title })
 {
@@ -103,10 +105,11 @@ function ReportItem({ months, yearlyReports, type, title })
                                         : (
                                             yearlyReports.map((item, index) => (
                                                 <div key={index}>
-                                                    <strong>{item.year}</strong>{" "}
+                                                    <strong className="yearly-report-date">{item.year}</strong>{" "}
                                                     <span
                                                         onClick={e => onClickHandler(e, item)}
                                                         style={{ cursor: "pointer" }}
+                                                        className="yearly-report-item"
                                                     >
                                                         {item.name}
                                                     </span>

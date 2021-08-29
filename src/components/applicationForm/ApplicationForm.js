@@ -69,12 +69,13 @@ function ApplicationForm({ form, title })
                   form.map((inputItem) => (
                     <div key={inputItem.item}>
                       <input placeholder={inputItem.placeholder} value={inputValues[inputItem.item]}
-                        onChange={handleChange} id={inputItem.item} name={inputItem.placeholder} />
+                        onChange={handleChange} id={inputItem.item} name={inputItem.placeholder}
+                        className="input" />
                     </div>
                   ))}
               </div>
               <hr />
-              <button type="submit">Դիմել</button>
+              <button type="submit" className="appFormButton">Դիմել</button>
             </form>
           </div>
         </div>

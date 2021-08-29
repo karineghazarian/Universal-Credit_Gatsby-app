@@ -1,9 +1,9 @@
 import React from "react"
 
-import Seo from "../components/seo/Seo"
+import Seo from "../components/Seo/Seo"
 
 import useNavigateTo from "../hooks/useNavigateTo"
-import Layout from "../components/layout/Layout"
+import Layout from "../components/Layout/Layout"
 
 const IndexPage = () =>
 {

@@ -32,7 +32,6 @@ License.propTypes = {
     title: PropTypes.string
 }
 
+License.displayName = 'License'
 
 export default React.memo(License);
-
-License.displayName = 'License';

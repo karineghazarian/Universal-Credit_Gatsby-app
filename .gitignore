@@ -36,7 +36,7 @@ build/Release
 node_modules/
 jspm_packages/
 
-# Typescript v1 declaration files
+# Typescript v1 declaration Files
 typings/
 
 # Optional npm cache directory
@@ -51,19 +51,19 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
-# dotenv environment variable files
+# dotenv environment variable Files
 .env.development
 
-# gatsby files
+# gatsby Files
 .cache/
 public
 
-# Mac files
+# Mac Files
 .DS_Store
 
 # Yarn
 yarn-error.log
 .pnp/
 .pnp.js
-# Yarn Integrity files
+# Yarn Integrity Files
 .yarn-integrity

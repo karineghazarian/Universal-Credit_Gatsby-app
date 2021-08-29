@@ -1,0 +1,116 @@
+.headerMain {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
+    position: fixed;
+    z-index: 20;
+    background: #fff;
+    width: 100%;
+    font-size: 1em;
+    min-height: 50px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: #fff;
+}
+
+.hamburgerHeader {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 40%;
+    max-width: 400px;
+    min-width: 320px;
+    flex-direction: column;
+    height: calc(100% - 50px);
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
+    padding-bottom: 40px;
+}
+
+.navContainer {
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin: 1rem auto;
+}
+
+.btnClicked {
+    transform: rotate(90deg)
+}
+
+.iconClose {
+    font-size: 22px;
+}
+
+.iconMenu {
+    font-size: 24px;
+}
+
+.menuBtn {
+    transition: all .3s ease-out;
+    display: inline-block;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.menuBtn:focus {
+    outline: none;
+}
+
+.headerLogo {
+    width: 200px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.headerNavbar {
+    display: flex;
+    flex: 1 1;
+    height: 100%;
+    align-items: center;
+    padding: 0px 2px;
+}
+
+.contactPhone {
+    text-decoration: none;
+    color: #424242;
+    display: block;
+    margin-top: 5px;
+    min-width: 123px;
+    white-space: nowrap;
+}
+
+.contactPhoneContainer {
+    padding: 0.6rem;
+}
+
+.link {
+    text-decoration: none;
+    white-space: nowrap;
+    color: #424242;
+    padding: 1.35em;
+    transition: all 700ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.link:hover {    
+    color: #fff;
+    background: #999;
+}
+
+.active {
+    color: #fff;
+    background: #999;
+}
+
+@media only screen and (max-width: 1440px) {
+    .headerMain {
+        font-size: 0.8em;
+    }
+    .link {
+        padding: 1.8em 0.8em;
+    }
+}

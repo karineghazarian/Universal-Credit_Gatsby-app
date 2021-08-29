@@ -2,9 +2,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import { graphql } from "gatsby"
 
-import Layout from "../components/layout/Layout"
+import Layout from "../components/Layout/Layout"
 import DynamicContent from "../components/DynamicContent/DynamicContent"
-import Seo from "../components/seo/Seo"
+import Seo from "../components/Seo/Seo"
 
 import { pageSelector } from "./selector"
 

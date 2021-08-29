@@ -1,10 +1,10 @@
 /**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this files.
+ * Implement Gatsby's SSR (Server Side Rendering) APIs in this Files.
  *
  * See: https://www.gatsbyjs.com/docs/ssr-apis/
  */
 
-// You can delete this files if you're not using it
+// You can delete this Files if you're not using it
 import React from "react";
 
 

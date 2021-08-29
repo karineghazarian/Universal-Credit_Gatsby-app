@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types"
+
 import "./Rates.css";
 
-function Rates(props)
+const Rates = ({ src }) =>
 {
     const [protocol, setProtocol] = useState(null);
-    const { src } = props;
 
     useEffect(() =>
     {
@@ -32,4 +32,6 @@ Rates.propTypes = {
     src: PropTypes.string
 }
 
-export default Rates;
+Rates.displayName = "Rates"
+
+export default React.memo(Rates);

@@ -35,6 +35,8 @@
     border-radius: 4px;
     overflow: hidden;
     color: #424242;
+    max-width: 40%;
+    min-width: 400px;
   }
   
   .opened .modal {
@@ -54,7 +56,8 @@
   
   .request-modal form .input-container {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
     margin-bottom: 1rem;
   }
   
@@ -62,9 +65,9 @@
     flex-direction: column;
   }
   
-  .request-modal form .input-container > div:first-of-type {
+  /* .request-modal form .input-container > div:first-of-type {
     margin-right: 1rem;
-  }
+  } */
   
   .request-modal form .input-container > div > div {
     margin-bottom: 0.5rem;
@@ -77,7 +80,8 @@
     border: none;
     box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
     transition: box-shadow 700ms cubic-bezier(0.19, 1, 0.22, 1);
-    width: 390px;
+    width: 29em;
+    margin-top: 10px;
   }
 
   input::-webkit-input-placeholder {
@@ -93,9 +97,16 @@ hr {
     height: 1px;
 }
 
+.appFormButton {
+  width: 49%;
+}
+
 @media screen and (max-width: 900px) { 
     .request-modal form .input-container {
         display: flex;
         flex-direction: column;
+    }
+    .modal-content {
+      padding: 1rem 2rem;
     }
 }

@@ -2,6 +2,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import ReportItem from "../Report/ReportItem"
 
+import * as styles from "./QuarterReport.module.css"
+
 const QuarterReport = ({ reports, title }) =>
 {
   function getReportsOfTheYear(r, year)
@@ -38,8 +40,8 @@ const QuarterReport = ({ reports, title }) =>
   })
 
   return (
-    <div>
-      <div>{title}</div>
+    <div className={styles.quarterReportContainer}>
+      <h2 style={{ maxWidth: "unset" }}>{title}</h2>
       {
         structuredReports.map((report) => ({
           ...report,

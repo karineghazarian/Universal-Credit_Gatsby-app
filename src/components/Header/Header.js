@@ -5,7 +5,6 @@ import { headerSelector } from "./selector"
 import Animated from "../Animated";
 
 import * as styles from "./Header.module.css"
-import "./style.css"
 
 const Header = () =>
 {
@@ -38,9 +37,9 @@ const Header = () =>
     }
   `)
   const {
-    navbarItems = [],
-    headerLogo = {},
-    contactPhone = [],
+      navbarItems = [],
+      headerLogo = {},
+      contactPhone = [],
   } = headerSelector(data);
 
   const [hamburger, setHamburger] = useState(false);

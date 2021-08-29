@@ -1,13 +1,12 @@
 import React from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 
-import * as styles from "./Footer.module.css"
-
+import { footerSelector } from "./selector"
 import Markdown from "../Markdown/Markdown"
 
-import { footerSelector } from "./selector"
+import * as styles from "./Footer.module.css"
 
-const Footer = React.memo(() =>
+const Footer = () =>
 {
   const data = useStaticQuery(graphql`
     query MyFooter {
@@ -93,6 +92,8 @@ const Footer = React.memo(() =>
       </div>
     </footer>
   )
-})
+}
 
-export default Footer
+Footer.displayName = "Footer"
+
+export default React.memo(Footer)

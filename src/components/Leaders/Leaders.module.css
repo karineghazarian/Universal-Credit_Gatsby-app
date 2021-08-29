@@ -1,0 +1,22 @@
+.leadersContainer {
+    padding: 2rem 5rem;
+}
+
+.leadsContainer {
+    box-shadow: 0 2px 7px 0 rgba(60, 64, 67, .3), 0 2px 12px 5px rgba(60, 64, 67, .15);
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    border-radius: 3px;
+
+}
+ 
+.leadsContainer > h3 {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  @media only screen and (max-width: 930px) {
+    .leadersContainer {
+        padding: 2rem 0.7rem;
+    }
+  }

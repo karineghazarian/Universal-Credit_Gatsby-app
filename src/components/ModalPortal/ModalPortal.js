@@ -23,7 +23,8 @@ function ModalPortal({ onClose, header, children })
                                 {header && (
                                     <div className="modal-head">
                                         {header}
-                                        <i className="icon-close" onClick={onClose} />
+                                        <i className="icon-close" onClick={onClose}
+                                            style={{ float: "right", marginRight: 7 }} />
                                     </div>
                                 )}
                                 <div className="modal-content">

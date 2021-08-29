@@ -26,6 +26,6 @@ Slide.propTypes = {
   }).isRequired,
 }
 
-export default React.memo(Slide)
-
 Slide.displayName = 'Slide'
+
+export default React.memo(Slide)

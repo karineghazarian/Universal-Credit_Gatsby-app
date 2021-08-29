@@ -1,11 +1,12 @@
 import React, { useCallback } from "react"
 import PropTypes from "prop-types"
+
 import rehypeRaw from "rehype-raw"
+
 import ReactMarkdown from "react-markdown"
+import "./Markdown.css";
 
-import * as styles from "./Markdown.module.css";
-
-const Markdown = ({ markdown, className, title }) =>
+const Markdown = React.memo(({ markdown, className, title }) =>
 {
   const transformImageUri = useCallback(
     uri =>
@@ -18,13 +19,13 @@ const Markdown = ({ markdown, className, title }) =>
       transformImageUri={transformImageUri}
       skipHtml={false}
       rehypePlugins={[rehypeRaw]}
-      className={`${className} ${styles.reactMarkDown}`}
+      className={`${className} reactMarkdown`}
       style={{ padding: "2rem, 5rem" }}
     >
       {markdown}
     </ReactMarkdown>
   )
-}
+})
 
 Markdown.defaultProps = {
   className: "",
@@ -37,7 +38,6 @@ Markdown.propTypes = {
   title: PropTypes.string
 }
 
+export default Markdown
+
 Markdown.displayName = 'Markdown';
-
-export default React.memo(Markdown)
-

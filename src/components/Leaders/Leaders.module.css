@@ -13,7 +13,11 @@
 .leadsContainer > h3 {
     text-align: center;
     font-size: 1.5rem;
-  }
+}
+
+.markdownStyles {
+    margin: 2rem 0rem;
+}
 
   @media only screen and (max-width: 930px) {
     .leadersContainer {

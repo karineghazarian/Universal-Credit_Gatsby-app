@@ -14,7 +14,7 @@ const Leaders = ({ leaders, title }) =>
         <div key={leader.title} className={styles.leadsContainer}>
           {leader.title && <h2>{leader.title}</h2>}
           {leader.name && <h3>{leader.name}</h3>}
-          <Markdown markdown={leader.markdown} />
+          <Markdown markdown={leader.markdown} className={styles.markdownStyles} />
         </div>
       ))}
     </div>

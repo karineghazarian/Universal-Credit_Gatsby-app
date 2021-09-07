@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     cursor: pointer;
+    padding-bottom: 0.5rem;
   }
   
   .report-year strong {

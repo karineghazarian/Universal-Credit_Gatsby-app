@@ -1,12 +1,19 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-const File = React.memo(({ file }) => (
-  <div>{file.publicURL}</div>
-))
+import * as styles from "./Files.module.css"
+
+const File = React.memo(({ fileObj }) =>
+{
+  console.log(fileObj)
+  return (
+    <a href={`${process.env.GATSBY_URL}${fileObj.file.publicURL}`}
+      target="__blank" className={styles.fileLink}>{fileObj.text}</a>
+  )
+})
 
 File.propTypes = {
-  file: PropTypes.object.isRequired,
+  fileObj: PropTypes.object.isRequired,
 }
 
 export default File

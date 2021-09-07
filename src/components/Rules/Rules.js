@@ -18,7 +18,7 @@ Rules.propTypes = {
   title: PropTypes.string,
   rules: PropTypes.shape({
     file: PropTypes.shape({
-      url: PropTypes.string,
+      publicURL: PropTypes.string,
       name: PropTypes.string,
     }),
   }),

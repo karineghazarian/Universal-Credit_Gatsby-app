@@ -6,7 +6,7 @@ import rehypeRaw from "rehype-raw"
 import ReactMarkdown from "react-markdown"
 import "./Markdown.css";
 
-const Markdown = React.memo(({ markdown, className, title }) =>
+const Markdown = ({ markdown, className, title }) =>
 {
   const transformImageUri = useCallback(
     uri =>
@@ -25,7 +25,7 @@ const Markdown = React.memo(({ markdown, className, title }) =>
       {markdown}
     </ReactMarkdown>
   )
-})
+}
 
 Markdown.defaultProps = {
   className: "",
@@ -38,6 +38,6 @@ Markdown.propTypes = {
   title: PropTypes.string
 }
 
-export default Markdown
+export default React.memo(Markdown)
 
 Markdown.displayName = 'Markdown';

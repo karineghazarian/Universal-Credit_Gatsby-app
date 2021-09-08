@@ -2,15 +2,21 @@ import React from "react"
 import PropTypes from "prop-types"
 import File from "./File"
 
+import * as styles from "./Files.module.css"
+
 const Files = ({ files, title }) =>
 {
   console.log(files, title)
   return (
-    <div className="container">
-      <h2>{title}</h2>
-      {files?.map((fileObj, i) => (
-        <File key={`${fileObj.id}-${i}`} file={fileObj.file} />
-      ))}
+    <div className={styles.filesContainer}>
+      {title && <h2>{title}</h2>}
+      <ul className={styles.fileUl}>
+        {files?.map((fileObj, i) => (
+          <li className={styles.fileLi}>
+            <File key={`${fileObj.id}-${i}`} fileObj={fileObj} />
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

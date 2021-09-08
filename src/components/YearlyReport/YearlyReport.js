@@ -15,16 +15,11 @@ const YearlyReport = ({ reports, title }) =>
   return (
     <div className={styles.yearlyReportContainer}>
       <h2 style={{ maxWidth: "unset" }}>{title}</h2>
-      {
-        structuredReports.map((report, i) => (
-          <ReportItem
-            key={report.year + i}
-            title="ՏԱՐԵԿԱՆ ՖԻՆԱՆՍԱԿԱՆ ՀԱՇՎԵՏՎՈՒԹՅՈՒՆՆԵՐ"
-            yearlyReports={structuredReports}
-            type="yearly"
-          />
-        ))
-      }
+      <ReportItem
+        title="ՏԱՐԵԿԱՆ ՖԻՆԱՆՍԱԿԱՆ ՀԱՇՎԵՏՎՈՒԹՅՈՒՆՆԵՐ"
+        yearlyReports={structuredReports}
+        type="yearly"
+      />
     </div>
   )
 }

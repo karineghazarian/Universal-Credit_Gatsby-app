@@ -191,6 +191,15 @@ fragment StrapiPageContentLicenseFragment on StrapiPageContentLicense {
 }
 `
 
+export const FragmentStructure = graphql`
+fragment StrapiPageContentStructureFragment on StrapiPageContentStructure {
+  cover {
+    publicURL
+    name
+  }
+}
+`
+
 export const pageQuery = graphql`
   query MyPage($id: String) {
     strapiPage(id: { eq: $id }) {
@@ -243,6 +252,9 @@ export const pageQuery = graphql`
         }
         Rules {
           ...StrapiPageContentRulesFragment
+        }
+        Structure {
+          ...StrapiPageContentStructureFragment
         }
       }
     }

@@ -16,6 +16,7 @@ import Rules from "../Rules/Rules"
 import Terms from "../Terms/Terms"
 import Leaders from "../Leaders/Leaders"
 import License from "../License/License"
+import Structure from "../Structure/Structure"
 
 const CONTENT = {
   SLIDE: "Slide",
@@ -32,7 +33,8 @@ const CONTENT = {
   RULES: "Rules",
   TERMS: "Terms",
   LEADERS: 'Leaders',
-  LICENSE: 'License'
+  LICENSE: 'License',
+  STRUCTURE: 'Structure'
 }
 
 const DynamicContent = ({ content }) =>
@@ -197,6 +199,16 @@ const DynamicContent = ({ content }) =>
           }
         })
         break;
+      case CONTENT.STRUCTURE:
+        components.push({
+          Component: Structure,
+          props: {
+            key,
+            structure: value,
+            title: content.title
+          }
+        })
+        break;
       default:
         break;
     }
@@ -228,6 +240,7 @@ DynamicContent.propTypes = {
     TERMS: PropTypes.object,
     Leaders: PropTypes.array,
     License: PropTypes.array,
+    Structure: PropTypes.object
   }).isRequired,
 }
 

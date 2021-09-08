@@ -50,7 +50,6 @@
     font-family: sans-serif;
     font-weight: 500;
     word-wrap: break-word;
-    font-size: 1.1rem;
   }
   
   .card:hover {
@@ -69,5 +68,9 @@
     .cardsContainer .card {
         margin: 0 auto 20px;
         width: 100%;
+    }
+
+    h2 {
+      font-size: 1.5rem;
     }
 }

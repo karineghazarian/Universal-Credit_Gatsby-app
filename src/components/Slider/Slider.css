@@ -15,9 +15,9 @@
   .hero-container h1 {
     position: absolute;
     color: #fff;
-    bottom: 4rem;
+    bottom: 3rem;
     left: 5rem;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 
   .animated-carousel-dots {
@@ -50,6 +50,6 @@
   @media only screen and (max-width: 768px) {
     .hero-container h1 {
       font-size: 1.3rem;
-      left: 2rem;
+      left: 1rem;
     }
   }

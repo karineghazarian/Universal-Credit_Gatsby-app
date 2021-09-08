@@ -45,7 +45,7 @@ const QuarterReport = ({ reports, title }) =>
       {
         structuredReports.map((report) => ({
           ...report,
-          months: [...report.months.reverse().map((month) => ({
+          months: [...report.months.map((month) => ({
             ...month,
             docs: [...month.docs.reverse()]
           }))]

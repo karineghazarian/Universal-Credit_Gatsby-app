@@ -4,7 +4,8 @@ import Rates from "./Rates"
 
 import * as styles from "./Calculator.module.css"
 
-const Calculator = ({ calculator, title }) => {
+const Calculator = ({ calculator, title }) =>
+{
   const [amount, setAmount] = useState();
   const [percent, setPercent] = useState();
   const [months, setMonths] = useState();
@@ -66,7 +67,7 @@ const Calculator = ({ calculator, title }) => {
 
   return (
     <div className={styles.calculator}>
-      <h2 style={{ "marginTop": 65 }}>{title}</h2>
+      <h2>{title}</h2>
       <form onSubmit={calculate}>
         <div>
           <label>Վարկի գումար:</label>

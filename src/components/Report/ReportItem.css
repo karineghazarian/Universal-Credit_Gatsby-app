@@ -20,12 +20,10 @@
   .yearly-report-item {
     cursor: pointer;
     color: #424242;
-    font-size: 1.25rem;
     line-height: 1.45;
   }
 
   .yearly-report-date {
-    font-size: 1.25rem;
     line-height: 1.45;
     display: block;
   }

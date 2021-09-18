@@ -1,13 +1,11 @@
 import React, { useCallback } from "react"
 import PropTypes from "prop-types"
-
 import rehypeRaw from "rehype-raw"
-
 import ReactMarkdown from "react-markdown"
+
 import "./Markdown.css"
 
-const Markdown = ({ markdown, className, title }) =>
-{
+const Markdown = ({ markdown, className, title }) => {
   const transformImageUri = useCallback(
     uri =>
       uri.startsWith("http") ? uri : `${process.env.GATSBY_API_URL}${uri}`,
@@ -16,7 +14,7 @@ const Markdown = ({ markdown, className, title }) =>
 
   return (
     <>
-      {title && <h2 style={{ marginTop: 40 }}>{title}</h2>}
+      {title && <h2>{title}</h2>}
       <ReactMarkdown
         transformImageUri={transformImageUri}
         skipHtml={false}
@@ -32,15 +30,15 @@ const Markdown = ({ markdown, className, title }) =>
 
 Markdown.defaultProps = {
   className: "",
-  title: ""
+  title: "",
 }
 
 Markdown.propTypes = {
   markdown: PropTypes.string.isRequired,
   className: PropTypes.string,
-  title: PropTypes.string
+  title: PropTypes.string,
 }
 
-export default React.memo(Markdown)
+Markdown.displayName = "Markdown"
 
-Markdown.displayName = 'Markdown';
+export default React.memo(Markdown)

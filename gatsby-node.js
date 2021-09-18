@@ -1,14 +1,11 @@
 const path = require("path")
 
 const makeRequest = (graphql, request) =>
-  new Promise((resolve, reject) =>
-  {
+  new Promise((resolve, reject) => {
     // Query for nodes to use in creating pages.
     resolve(
-      graphql(request).then(result =>
-      {
-        if (result.errors)
-        {
+      graphql(request).then(result => {
+        if (result.errors) {
           reject(result.errors)
         }
 
@@ -19,8 +16,7 @@ const makeRequest = (graphql, request) =>
 
 // Implement the Gatsby API “createPages”. This is called once the
 // data layer is bootstrapped to let plugins create pages from data.
-exports.createPages = ({ actions, graphql }) =>
-{
+exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
   const getPages = makeRequest(
@@ -35,21 +31,16 @@ exports.createPages = ({ actions, graphql }) =>
       }
     }
     `
-  ).then(result =>
-  {
+  ).then(result => {
     const pages = result.data.allStrapiPage.nodes
     const Component = path.resolve("src/page-template/Page.js")
     //  Create pages for each page.
-    pages.forEach(node =>
-    {
-      console.log(node.path, "path");
+    pages.forEach(node => {
+      console.log(node.path)
       createPage({
         path: node.path,
         key: node.id,
         component: Component,
-        context: {
-          id: node.id,
-        },
       })
     })
   })

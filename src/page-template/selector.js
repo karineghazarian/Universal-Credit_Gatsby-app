@@ -1,1 +1,1 @@
-export const pageSelector = data => data?.strapiPage || {}
+export const pageSelector = data => ({...data?.strapiPage || {}, allFile: data?.allFile?.nodes || []})

@@ -4,52 +4,55 @@ import ReportItem from "../Report/ReportItem"
 
 import * as styles from "./QuarterReport.module.css"
 
-const QuarterReport = ({ reports, title }) =>
-{
-  function getReportsOfTheYear(r, year)
-  {
-    return r.filter((report) => report.year === year);
+const QuarterReport = ({ reports, title }) => {
+  function getReportsOfTheYear(r, year) {
+    return r.filter(report => report.year === year)
   }
 
-  function getReportsOfTheMonth(r, month)
-  {
-    return r.filter((report) => report.month === month);
+  function getReportsOfTheMonth(r, month) {
+    return r.filter(report => report.month === month)
   }
 
-  const years = Array.from(new Set(reports.map(report => report.year)));
+  const years = Array.from(new Set(reports.map(report => report.year)))
 
-  const structuredReports = [];
-  years?.forEach(year =>
-  {
-    const yearFilteredReports = getReportsOfTheYear(reports, year);
-    const months = Array.from(new Set(yearFilteredReports.map(report => report.month)));
+  const structuredReports = []
+  years?.forEach(year => {
+    const yearFilteredReports = getReportsOfTheYear(reports, year)
+    const months = Array.from(
+      new Set(yearFilteredReports.map(report => report.month))
+    )
     structuredReports.push({
       year: year.replace("year_", ""),
-      months: months.map((month) =>
-      {
-        const monthFilteredReports = getReportsOfTheMonth(yearFilteredReports, month);
+      months: months.map(month => {
+        const monthFilteredReports = getReportsOfTheMonth(
+          yearFilteredReports,
+          month
+        )
         return {
           name: month,
           docs: monthFilteredReports.map(filteredReport => ({
             name: filteredReport.text,
             file: filteredReport.file,
-          }))
+          })),
         }
-      })
+      }),
     })
   })
 
   return (
     <div className={styles.quarterReportContainer}>
-      <h2 style={{ maxWidth: "unset" }}>{title}</h2>
-      {
-        structuredReports.map((report) => ({
+      {title && <h2>{title}</h2>}
+      {structuredReports
+        .map(report => ({
           ...report,
-          months: [...report.months.map((month) => ({
-            ...month,
-            docs: [...month.docs.reverse()]
-          }))]
-        })).map((report, i) => (
+          months: [
+            ...report.months.map(month => ({
+              ...month,
+              docs: [...month.docs.reverse()],
+            })),
+          ],
+        }))
+        .map((report, i) => (
           <ReportItem
             key={report.year + i}
             title={`${report.year} ՀԱՇՎԵՏՎՈՒԹՅՈՒՆՆԵՐ /միջանկյալ ֆինանսական/`}
@@ -57,8 +60,7 @@ const QuarterReport = ({ reports, title }) =>
             months={report.months}
             type="monthly"
           />
-        ))
-      }
+        ))}
     </div>
   )
 }
@@ -73,6 +75,6 @@ QuarterReport.propTypes = {
   reports: PropTypes.array,
 }
 
-QuarterReport.displayName = 'QuarterReport'
+QuarterReport.displayName = "QuarterReport"
 
-export default React.memo(QuarterReport);
+export default React.memo(QuarterReport)

@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 
 import { headerSelector } from "./selector"
-import Animated from "../Animated";
+import Animated from "../Animated"
 
 import * as styles from "./Header.module.css"
 
-const Header = () =>
-{
+const Header = () => {
   const data = useStaticQuery(graphql`
     query HeaderQuery {
       allStrapiHeader {
@@ -15,7 +14,7 @@ const Header = () =>
           headerLogo {
             link
             icon {
-              publicURL
+              url
               name
             }
           }
@@ -37,86 +36,62 @@ const Header = () =>
     }
   `)
   const {
-      navbarItems = [],
-      headerLogo = {},
-      contactPhone = [],
-  } = headerSelector(data);
+    navbarItems = [],
+    headerLogo = {},
+    contactPhone = [],
+  } = headerSelector(data)
 
-  const [hamburger, setHamburger] = useState(false);
-  const [show, setShow] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [rotate, setRotate] = useState(null);
+  const [hamburger, setHamburger] = useState(false)
+  const [show, setShow] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [rotate, setRotate] = useState(null)
 
-  const navContainerRef = React.useRef();
-  const navRef = React.useRef();
-  const timeoutIdRef = React.useRef();
+  const navContainerRef = React.useRef()
+  const navRef = React.useRef()
+  const timeoutIdRef = React.useRef()
 
-  const onResize = () =>
-  {
-    const isSmall = window.innerWidth <= 1024;
-    if (!hamburger)
-    {
+  const onResize = () => {
+    const isSmall = window.innerWidth <= 1024
+    if (!hamburger) {
       setHamburger(isSmall)
-      setShow(!isSmall);
-      setRotate(false);
+      setShow(!isSmall)
+      setRotate(false)
     }
   }
 
-  const toggleIcon = () =>
-  {
+  const toggleIcon = () => {
     setRotate(!rotate)
   }
 
-  const toggleMenu = (e) =>
-  {
-    toggleIcon();
-    if (show)
-    {
+  const toggleMenu = e => {
+    toggleIcon()
+    if (show) {
       setOpen(!open)
-    } else
-    {
+    } else {
       setShow(true)
     }
   }
 
-  const onBlur = (e) =>
-  {
-    // if (e.relatedTarget && e.target)
-    //     if (e.relatedTarget.tabIndex !== e.target.tabIndex)
-    //     {
-    //         if (rotate)
-    //         {
-    //             toggleMenu(e)
-    //         }
-    //     }
-  }
-
-  useEffect(() =>
-  {
-    const isSmall = window.innerWidth <= 1024;
-    setHamburger(isSmall);
-    setShow(!isSmall);
-    window.addEventListener("resize", onResize);
+  useEffect(() => {
+    const isSmall = window.innerWidth <= 1024
+    setHamburger(isSmall)
+    setShow(!isSmall)
+    window.addEventListener("resize", onResize)
     // eslint-disable-next-line
   }, [])
 
-  useEffect(() =>
-  {
-    if (timeoutIdRef.current)
-    {
+  useEffect(() => {
+    if (timeoutIdRef.current) {
       clearTimeout(timeoutIdRef.current)
     }
-    if (open)
-    {
-      timeoutIdRef.current = setTimeout(() =>
-      {
-        setShow(false);
+    if (open) {
+      timeoutIdRef.current = setTimeout(() => {
+        setShow(false)
         setOpen(false)
-      }, 700);
+      }, 700)
     }
-    return () =>
-    {
-      clearTimeout(timeoutIdRef.current);
+    return () => {
+      clearTimeout(timeoutIdRef.current)
     }
   }, [open])
 
@@ -125,10 +100,18 @@ const Header = () =>
       {hamburger && (
         <span
           tabIndex={0}
-          className={`${styles.menuBtn} ${rotate ? styles.btnClicked : styles.btnUnClicked}`}
+          className={`${styles.menuBtn} ${
+            rotate ? styles.btnClicked : styles.btnUnClicked
+          }`}
           onClick={toggleMenu}
         >
-           <i className={rotate ? `${styles.iconClose} icon-close` : `${styles.iconMenu} icon-menu`}/>
+          <i
+            className={
+              rotate
+                ? `${styles.iconClose} icon-close`
+                : `${styles.iconMenu} icon-menu`
+            }
+          />
         </span>
       )}
       {show && (
@@ -137,65 +120,77 @@ const Header = () =>
           to={hamburger ? { transform: "translateX(0%)" } : {}}
           inverse={open}
         >
-          {
-            style => (
-              <header
-                className={`${styles.header} ${hamburger ? styles.hamburgerHeader: ""}`}
-                style={hamburger ? style : {}}
+          {style => (
+            <header
+              className={`${styles.header} ${
+                hamburger ? styles.hamburgerHeader : ""
+              }`}
+              style={hamburger ? style : {}}
+            >
+              <Link to={headerLogo.link} title={headerLogo.link}>
+                <img
+                  src={`${process.env.GATSBY_API_URL}${headerLogo.icon.url}`}
+                  alt={headerLogo.icon.name}
+                  className={styles.headerLogo}
+                />
+              </Link>
+              <div
+                ref={navContainerRef}
+                className={styles.navContainer}
+                style={{
+                  boxShadow:
+                    navRef.current?.offsetWidth >
+                    navContainerRef.current?.offsetWidth
+                      ? "inset 0 2px 5px 0 rgba(0, 0, 0, 0.14)"
+                      : "none",
+                  ...(hamburger ? {} : { margin: "0 auto" }),
+                }}
               >
-                <Link to={headerLogo.link} title={headerLogo.link}>
-                  <img
-                    src={headerLogo.icon.publicURL}
-                    alt={headerLogo.icon.name}
-                    className={styles.headerLogo}
-                  />
-                </Link>
-                <div ref={navContainerRef}
-                     className={styles.navContainer}
-                     style={{
-                       boxShadow: (
-                         navRef.current?.offsetWidth > navContainerRef.current?.offsetWidth
-                           ? "inset 0 2px 5px 0 rgba(0, 0, 0, 0.14)" : "none"
-                       ),
-                       ...(hamburger ? {}: { margin: "0 auto" }),
-                     }}
+                <nav
+                  className={styles.headerNavbar}
+                  ref={navRef}
+                  style={
+                    hamburger
+                      ? {
+                          flexDirection: "column",
+                        }
+                      : {
+                          justifyContent: "flex-end",
+                        }
+                  }
                 >
-                  <nav
-                    className={styles.headerNavbar} ref={navRef}
-                    style={hamburger ? {
-                      flexDirection: 'column',
-                    }: {
-                      justifyContent: 'flex-end'
-                    }}
+                  {navbarItems?.map(
+                    link =>
+                      link.page.path !== "/home" && (
+                        <Link
+                          key={link.text}
+                          to={link.page.path}
+                          title={link.text}
+                          className={styles.link}
+                          activeClassName={styles.active}
+                        >
+                          {link.text}
+                        </Link>
+                      )
+                  )}
+                </nav>
+              </div>
+              <div className={styles.contactPhoneContainer}>
+                {contactPhone?.map(phone => (
+                  <a
+                    key={phone.link}
+                    className={styles.contactPhone}
+                    href={phone.link}
+                    title={phone.text}
+                    target="_blank"
+                    rel="noreferrer"
                   >
-                    {navbarItems?.map(link => link.page.path !== "/home" && (
-                      <Link
-                        to={link.page.path}
-                        title={link.text}
-                        className={styles.link}
-                        activeClassName={styles.active}
-                      >
-                        {link.text}
-                      </Link>
-                    ))}
-                  </nav>
-                </div>
-                <div className={styles.contactPhoneContainer}>
-                  {contactPhone?.map(phone => (
-                    <a
-                      className={styles.contactPhone}
-                      href={phone.link}
-                      title={phone.text}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {phone.text}
-                    </a>
-                  ))}
-                </div>
-              </header>
-            )
-          }
+                    {phone.text}
+                  </a>
+                ))}
+              </div>
+            </header>
+          )}
         </Animated>
       )}
     </div>
@@ -204,6 +199,4 @@ const Header = () =>
 
 Header.displayName = "Header"
 
-export default React.memo(Header);
-
-
+export default React.memo(Header)

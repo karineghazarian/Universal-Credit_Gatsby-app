@@ -1,9 +1,9 @@
 .yearlyReportContainer {
-    padding: 2rem 5rem;
+  padding: 2rem 5rem;
 }
 
 @media only screen and (max-width: 930px) {
-    .yearlyReportContainer {
-        padding: 2rem 0.7rem;
-    }
+  .yearlyReportContainer {
+    padding: 2rem 0.7rem;
   }
+}

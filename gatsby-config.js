@@ -32,7 +32,7 @@ module.exports = {
       resolve: "gatsby-source-strapi",
       options: {
         apiURL: process.env.GATSBY_API_URL || "http://localhost:1337",
-        contentTypes: ["page"],
+        collectionTypes: ["page"],
         singleTypes: ["header", "footer"],
         queryLimit: 1000,
       },

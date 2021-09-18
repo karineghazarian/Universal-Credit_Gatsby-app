@@ -1,20 +1,19 @@
 import React from "react"
 import PropTypes from "prop-types"
-import ReportItem from "../Report/ReportItem";
+import ReportItem from "../Report/ReportItem"
 
-import * as styles from "./YearlyReport.module.css";
+import * as styles from "./YearlyReport.module.css"
 
-const YearlyReport = ({ reports, title }) =>
-{
+const YearlyReport = ({ reports, title }) => {
   const structuredReports = reports.map(report => ({
-    year: report.year?.replace("year_", "") || '--',
+    year: report.year?.replace("year_", "") || "--",
     name: report.text,
-    file: report.file
-  }));
+    file: report.file,
+  }))
 
   return (
     <div className={styles.yearlyReportContainer}>
-      <h2 style={{ maxWidth: "unset" }}>{title}</h2>
+      {title && <h2>{title}</h2>}
       <ReportItem
         title="ՏԱՐԵԿԱՆ ՖԻՆԱՆՍԱԿԱՆ ՀԱՇՎԵՏՎՈՒԹՅՈՒՆՆԵՐ"
         yearlyReports={structuredReports}
@@ -23,7 +22,6 @@ const YearlyReport = ({ reports, title }) =>
     </div>
   )
 }
-
 
 YearlyReport.defaultProps = {
   title: "",
@@ -35,6 +33,6 @@ YearlyReport.propTypes = {
   reports: PropTypes.array,
 }
 
-export default React.memo(YearlyReport);
+export default React.memo(YearlyReport)
 
-YearlyReport.displayName = 'YearlyReport'
+YearlyReport.displayName = "YearlyReport"

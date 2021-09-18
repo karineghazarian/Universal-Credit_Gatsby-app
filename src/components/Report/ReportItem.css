@@ -1,37 +1,38 @@
 .report-year {
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
-    padding-bottom: 0.5rem;
-  }
-  
-  .report-year strong {
-    font-size: 23px;
-  }
-  
-  .report-year strong, .report-year i {
-    color: #6e6e6e;
-    transition:color .3s ease-out;
-  }
-  .report-year:hover strong, .report-year:hover i{
-    color: #424242;
-  }
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  padding-bottom: 0.5rem;
+}
 
+.report-year strong {
+  font-size: 23px;
+}
+
+.report-year strong,
+.report-year i {
+  color: #6e6e6e;
+  transition: color 0.3s ease-out;
+}
+.report-year:hover strong,
+.report-year:hover i {
+  color: #424242;
+}
+
+.yearly-report-item {
+  cursor: pointer;
+  color: #424242;
+  line-height: 1.45;
+}
+
+.yearly-report-date {
+  line-height: 1.45;
+  display: block;
+}
+
+@media only screen and (max-width: 930px) {
   .yearly-report-item {
-    cursor: pointer;
-    color: #424242;
-    line-height: 1.45;
-  }
-
-  .yearly-report-date {
-    line-height: 1.45;
-    display: block;
-  }
-
-  
-  @media only screen and (max-width: 930px) {
-    .yearly-report-item {
     font-size: 1rem;
     line-height: 1.1;
-    }
   }
+}

@@ -32,188 +32,188 @@ const CONTENT = {
   YEARLY_REPORT: "YearlyReport",
   RULES: "Rules",
   TERMS: "Terms",
-  LEADERS: 'Leaders',
-  LICENSE: 'License',
-  STRUCTURE: 'Structure'
+  LEADERS: "Leaders",
+  LICENSE: "License",
+  STRUCTURE: "Structure",
 }
 
-const DynamicContent = ({ content }) =>
-{
-  const components = [];
-  Object.entries(content).forEach(prop =>
-  {
+const DynamicContent = ({ content, allFile }) => {
+  const components = []
+  Object.entries(content).forEach(prop => {
     const [key, value] = prop
-    if (!value || key === "id" || key === 'title')
-    {
-      return;
+    if (!value || key === "id" || key === "title") {
+      return
     }
-    switch (key)
-    {
+    switch (key) {
       case CONTENT.SLIDE:
         components.push({
           Component: Slider,
           props: {
             key,
             slider: value,
-            title: content.title
-          }
+            title: content.title,
+            allFile,
+          },
         })
-        break;
+        break
       case CONTENT.MARKDOWN:
         components.push({
           Component: Markdown,
           props: {
             key,
             markdown: value.markdown,
-            title: content.title
-          }
+            title: content.title,
+          },
         })
-        break;
+        break
       case CONTENT.CARD:
         components.push({
           Component: CreditCards,
           props: {
             key,
             cards: value,
-            title: content.title
-          }
+            title: content.title,
+            allFile,
+          },
         })
-        break;
+        break
       case CONTENT.WARNING:
         components.push({
           Component: Warning,
           props: {
             key,
             warning: value.warning,
-            title: content.title
-          }
+            title: content.title,
+          },
         })
-        break;
+        break
       case CONTENT.MODALWARNING:
         components.push({
           Component: ModalWarning,
           props: {
             key,
             modalWarning: value.warning,
-            title: content.title
-          }
+            title: content.title,
+          },
         })
-        break;
+        break
       case CONTENT.MAP:
         components.push({
           Component: Map,
           props: {
             key,
             src: value.src,
-            title: content.title
-          }
+            title: content.title,
+          },
         })
-        break;
+        break
       case CONTENT.APPLICATION:
         components.push({
           Component: ApplicationForm,
           props: {
             key,
             form: value,
-            title: content.title
-          }
+            title: content.title,
+          },
         })
-        break;
+        break
       case CONTENT.CALCULATOR:
         components.push({
           Component: Calculator,
           props: {
             key,
             calculator: value,
-            title: content.title
-          }
+            title: content.title,
+          },
         })
-        break;
+        break
       case CONTENT.FILES:
         components.push({
           Component: Files,
           props: {
             key,
             files: value,
-            title: content.title
-          }
+            title: content.title,
+          },
         })
-        break;
+        break
       case CONTENT.QUARTER_REPORT:
         components.push({
           Component: QuarterReport,
           props: {
             key,
             reports: value,
-            title: content.title
-          }
+            title: content.title,
+          },
         })
-        break;
+        break
       case CONTENT.YEARLY_REPORT:
         components.push({
           Component: YearlyReport,
           props: {
             key,
             reports: value,
-            title: content.title
-          }
+            title: content.title,
+          },
         })
-        break;
+        break
       case CONTENT.RULES:
         components.push({
           Component: Rules,
           props: {
             key,
             rules: value,
-            title: content.title
-          }
+            title: content.title,
+            allFile
+          },
         })
-        break;
+        break
       case CONTENT.TERMS:
         components.push({
           Component: Terms,
           props: {
             key,
             terms: value,
-            title: content.title
-          }
+            title: content.title,
+          },
         })
-        break;
+        break
       case CONTENT.LEADERS:
         components.push({
           Component: Leaders,
           props: {
             key,
             leaders: value,
-            title: content.title
-          }
+            title: content.title,
+          },
         })
-        break;
+        break
       case CONTENT.LICENSE:
         components.push({
           Component: License,
           props: {
             key,
             licenses: value,
-            title: content.title
-          }
+            title: content.title,
+            allFile
+          },
         })
-        break;
+        break
       case CONTENT.STRUCTURE:
         components.push({
           Component: Structure,
           props: {
             key,
             structure: value,
-            title: content.title
-          }
+            title: content.title,
+            allFile
+          },
         })
-        break;
+        break
       default:
-        break;
+        break
     }
   })
-
 
   return components.map(({ Component = null, props = {} }) =>
     // eslint-disable-next-line react/prop-types,react/jsx-props-no-spreading
@@ -236,12 +236,13 @@ DynamicContent.propTypes = {
     Files: PropTypes.array,
     QuarterReport: PropTypes.array,
     YearlyReport: PropTypes.array,
-    RULES: PropTypes.object,
-    TERMS: PropTypes.object,
+    Rules: PropTypes.object,
+    Terms: PropTypes.array,
     Leaders: PropTypes.array,
     License: PropTypes.array,
-    Structure: PropTypes.object
+    Structure: PropTypes.object,
   }).isRequired,
+  allFile: PropTypes.array.isRequired,
 }
 
 export default React.memo(DynamicContent)

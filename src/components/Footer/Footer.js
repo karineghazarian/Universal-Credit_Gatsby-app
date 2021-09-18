@@ -6,8 +6,7 @@ import Markdown from "../Markdown/Markdown"
 
 import * as styles from "./Footer.module.css"
 
-const Footer = () =>
-{
+const Footer = () => {
   const data = useStaticQuery(graphql`
     query MyFooter {
       allStrapiFooter {
@@ -25,14 +24,14 @@ const Footer = () =>
           footerLogo {
             link
             icon {
-              publicURL
+              url
               name
             }
           }
           icons {
             link
             icon {
-              publicURL
+              url
               name
             }
           }
@@ -40,6 +39,7 @@ const Footer = () =>
       }
     }
   `)
+
   const {
     navbarItems = [],
     markdownRemark,
@@ -65,24 +65,30 @@ const Footer = () =>
           ))}
         </ul>
       </nav>
-      {markdownRemark && <Markdown markdown={markdownRemark.markdown} className={styles.footerWarning} />}
+      {markdownRemark && (
+        <Markdown
+          markdown={markdownRemark.markdown}
+          className={styles.footerWarning}
+        />
+      )}
       <div className={styles.footerCopywrite}>
         <Link to={footerLogo.link} title={footerLogo.link}>
           <img
-            src={footerLogo.icon.publicURL}
+            src={`${process.env.GATSBY_API_URL}${footerLogo.icon.url}`}
             alt={footerLogo.icon.name}
             className={styles.footerLogo}
           />
         </Link>
         <ul className={styles.footerIcons}>
-          {icons?.map(icon =>
-          {
+          {icons?.map(icon => {
             const link = icon.link.replace("/", "")
-            const imgSrc = icon.icon.publicURL
             return (
               <li key={`${icon.id}-${link}`} className={styles.footerIcon}>
                 <a href={link} title={link} target="_blank" rel="noreferrer">
-                  <img src={imgSrc} alt={link} />
+                  <img
+                    src={`${process.env.GATSBY_API_URL}${icon.icon.url}`}
+                    alt={link}
+                  />
                 </a>
               </li>
             )

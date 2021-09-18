@@ -14,17 +14,14 @@ const Map = ({ src, title }) => (
 )
 
 Map.defaultProps = {
-  title: ""
+  title: "",
 }
 
 Map.propTypes = {
   src: PropTypes.string.isRequired,
-  title: PropTypes.string
+  title: PropTypes.string,
 }
 
-Map.displayName = 'Map'
+Map.displayName = "Map"
 
-export default React.memo(Map);
-
-
-
+export default React.memo(Map)

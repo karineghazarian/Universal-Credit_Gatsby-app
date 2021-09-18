@@ -1,18 +1,18 @@
 .filesContainer {
-    padding: 0rem 5rem 1rem 5rem;
+  padding: 0rem 5rem 1rem 5rem;
 }
 
 .fileUl {
-    list-style-type:none
+  list-style-type: none;
 }
 
 .fileLi {
-    margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .fileLink {
-    text-decoration: none;
-    color: #424242;
-    display: inline-block;
-    font-weight: 700;
+  text-decoration: none;
+  color: #424242;
+  display: inline-block;
+  font-weight: 700;
 }

@@ -1,51 +1,53 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Carousel from "react-animated-carousel";
+import Carousel from "react-animated-carousel"
 import { Link } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import Slide from "./Slide";
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import Slide from "./Slide"
+import { getFile } from "../utils/getFile"
 
 import "./Slider.css"
 
-const Slider = ({ slider, title }) =>
-{
-  const slides = slider?.map(slide =>
-  {
-    const image = getImage(slide.cover)
-    return (
-      <div>
-        <GatsbyImage image={image} alt={slide.caption} className="slider-image" />
-        <Link to={slide.link}>
-          <h1>{slide.caption}</h1>
-        </Link>
-      </div>
-    )
-  });
+const Slider = ({ slider, title, allFile }) => {
+  const slides = slider?.map(slide => (
+    <div>
+      <GatsbyImage
+        image={getImage(getFile(allFile, slide.cover.localFile___NODE))}
+        alt={slide.cover.name}
+        className="slider-image"
+      />
+      <Link to={slide.link}>
+        <h1>{slide.caption}</h1>
+      </Link>
+    </div>
+  ))
 
   return (
     <div className="hero-container">
-      {
-        slider.length > 1 ?
-          <Carousel slides={slides}
-            animationType="SLIDE"
-            duration={5000}
-            withNavigation /> :
-          <Slide slide={slider[0]} />
-      }
+      {slider.length > 1 ? (
+        <Carousel
+          slides={slides}
+          animationType="SLIDE"
+          duration={5000}
+          withNavigation
+        />
+      ) : (
+        <Slide slide={slider[0]} allFile={allFile}/>
+      )}
     </div>
   )
 }
 
 Slider.defaultProps = {
-  title: ""
+  title: "",
 }
 
 Slider.propTypes = {
   slider: PropTypes.array.isRequired,
-  title: PropTypes.string
+  title: PropTypes.string,
+  allFile: PropTypes.array.isRequired,
 }
 
-Slider.displayName = 'Slider'
+Slider.displayName = "Slider"
 
 export default React.memo(Slider)
-

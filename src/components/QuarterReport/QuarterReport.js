@@ -2,28 +2,33 @@ import React from "react"
 import PropTypes from "prop-types"
 import ReportItem from "../Report/ReportItem"
 
-import * as styles from "./QuarterReport.module.css"
+import "./QuarterReport.css"
 
-const QuarterReport = ({ reports, title }) => {
-  function getReportsOfTheYear(r, year) {
+const QuarterReport = ({ reports, title }) =>
+{
+  function getReportsOfTheYear(r, year)
+  {
     return r.filter(report => report.year === year)
   }
 
-  function getReportsOfTheMonth(r, month) {
+  function getReportsOfTheMonth(r, month)
+  {
     return r.filter(report => report.month === month)
   }
 
   const years = Array.from(new Set(reports.map(report => report.year)))
 
   const structuredReports = []
-  years?.forEach(year => {
+  years?.forEach(year =>
+  {
     const yearFilteredReports = getReportsOfTheYear(reports, year)
     const months = Array.from(
       new Set(yearFilteredReports.map(report => report.month))
     )
     structuredReports.push({
       year: year.replace("year_", ""),
-      months: months.map(month => {
+      months: months.map(month =>
+      {
         const monthFilteredReports = getReportsOfTheMonth(
           yearFilteredReports,
           month
@@ -40,8 +45,8 @@ const QuarterReport = ({ reports, title }) => {
   })
 
   return (
-    <div className={styles.quarterReportContainer}>
-      {title && <h2>{title}</h2>}
+    <div className="quarterReportContainer">
+      {title && <h2 className="quarterReportTitle pageTitle">{title}</h2>}
       {structuredReports
         .map(report => ({
           ...report,

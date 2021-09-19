@@ -2,9 +2,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import ReportItem from "../Report/ReportItem"
 
-import * as styles from "./YearlyReport.module.css"
+import "./YearlyReport.css"
 
-const YearlyReport = ({ reports, title }) => {
+const YearlyReport = ({ reports, title }) =>
+{
   const structuredReports = reports.map(report => ({
     year: report.year?.replace("year_", "") || "--",
     name: report.text,
@@ -12,8 +13,8 @@ const YearlyReport = ({ reports, title }) => {
   }))
 
   return (
-    <div className={styles.yearlyReportContainer}>
-      {title && <h2>{title}</h2>}
+    <div className="yearlyReportContainer">
+      {title && <h2 className="yearlyReportTitle pageTitle">{title}</h2>}
       <ReportItem
         title="ՏԱՐԵԿԱՆ ՖԻՆԱՆՍԱԿԱՆ ՀԱՇՎԵՏՎՈՒԹՅՈՒՆՆԵՐ"
         yearlyReports={structuredReports}

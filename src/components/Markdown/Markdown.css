@@ -1,13 +1,12 @@
-.reactMarkDown {
+.markdownContainer {
   padding: 2rem 5rem;
 }
 
-.warningContainer {
-  padding: 2rem 5.5rem;
-}
-
-@media screen and (max-width: 930px) {
+@media screen and (max-width: 650px) {
   .reactMarkDown {
-    padding: 2rem 1.5rem;
+    padding: 0rem 1.5rem;
+  }
+  .markdownContainer {
+    padding: 2rem 0rem;
   }
 }

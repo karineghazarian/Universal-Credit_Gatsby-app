@@ -16,12 +16,12 @@
 }
 .report-year:hover strong,
 .report-year:hover i {
-  color: #424242;
+  color: #6e6e6e;;
 }
 
 .yearly-report-item {
   cursor: pointer;
-  color: #424242;
+  color: #6e6e6e;
   line-height: 1.45;
 }
 

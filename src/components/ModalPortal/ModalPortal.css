@@ -56,7 +56,7 @@
   cursor: pointer;
 }
 
-.modal-content {
+.warning-modal-content {
   /* margin-top: 20px; */
   padding: 1rem;
 }
@@ -66,7 +66,7 @@
   text-align: center;
   border-radius: 2px 2px 0 0;
   /*color: #ffff;*/
-  padding: 10px 0;
+  padding: 20px 0;
   text-transform: capitalize;
   position: relative;
 }
@@ -89,5 +89,11 @@
   .modal-main {
     font-size: 0.9em;
     line-height: 1.4;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .warning-modal-content {
+    padding: 0;
   }
 }

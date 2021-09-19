@@ -5,7 +5,8 @@ import ReactMarkdown from "react-markdown"
 
 import "./Markdown.css"
 
-const Markdown = ({ markdown, className, title }) => {
+const Markdown = ({ markdown, className, title }) =>
+{
   const transformImageUri = useCallback(
     uri =>
       uri.startsWith("http") ? uri : `${process.env.GATSBY_API_URL}${uri}`,
@@ -13,18 +14,18 @@ const Markdown = ({ markdown, className, title }) => {
   )
 
   return (
-    <>
-      {title && <h2>{title}</h2>}
+    <div className={`${className} markdownContainer`}>
+      {title && <h2 className="pageTitle">{title}</h2>}
       <ReactMarkdown
         transformImageUri={transformImageUri}
         skipHtml={false}
         rehypePlugins={[rehypeRaw]}
-        className={`${className} reactMarkDown`}
+        className="reactMarkDown"
         style={{ padding: "2rem, 5rem", textAlign: "center" }}
       >
         {markdown}
       </ReactMarkdown>
-    </>
+    </div>
   )
 }
 

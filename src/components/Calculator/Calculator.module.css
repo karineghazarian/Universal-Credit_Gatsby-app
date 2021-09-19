@@ -107,18 +107,23 @@ button:active {
   }
   .calculator label {
     display: inline-block;
-    width: 150px;
-    font-size: 0.9rem;
+    width: 300px;
+    font-size: 0.8rem;
   }
   input,
   .uiSelect {
     width: 300px;
   }
   select {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
+    width: 285px;
   }
   .calculator form > div,
   .requestModal form .input-container > div {
     flex-direction: column;
   }
+  input,
+ .uiSelect {
+   padding: 0.6rem 0;
+}
 }

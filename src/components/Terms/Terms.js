@@ -5,7 +5,7 @@ import * as styles from "./Terms.module.css"
 
 const Terms = ({ terms, title }) => (
   <div className={styles.termsContainer}>
-    {title && <h2 className={styles.termH1}>{title}</h2>}
+    {title && <h2 className={`${styles.termsTitle} pageTitle`}>{title}</h2>}
     <ul className={styles.termUl}>
       {terms.map(item => (
         <li key={item.id} className={styles.termLi}>

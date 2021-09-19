@@ -4,7 +4,8 @@ import Rates from "./Rates"
 
 import * as styles from "./Calculator.module.css"
 
-const Calculator = ({ calculator, title }) => {
+const Calculator = ({ calculator, title }) =>
+{
   const [amount, setAmount] = useState()
   const [percent, setPercent] = useState()
   const [months, setMonths] = useState()
@@ -12,22 +13,27 @@ const Calculator = ({ calculator, title }) => {
   const [warning, setWarning] = useState("")
   const [final, setFinal] = useState()
 
-  function calculate(e) {
+  function calculate(e)
+  {
     /* eslint-disable */
     e.preventDefault()
     setFinal("")
-    if (amount && percent && months && type) {
+    if (amount && percent && months && type)
+    {
       setWarning("")
       let r = percent / (12 * 100)
-      if (type === "1") {
+      if (type === "1")
+      {
         let final =
           (amount * (r * Math.pow(1 + r, months))) /
           (Math.pow(1 + r, months) - 1)
         setFinal(final.toFixed(2))
-      } else {
+      } else
+      {
         let final = Array(months)
           .fill("a")
-          .map((item, i) => {
+          .map((item, i) =>
+          {
             return (
               amount / months +
               (amount - i * +(amount / months).toFixed(2)) * r
@@ -35,28 +41,32 @@ const Calculator = ({ calculator, title }) => {
           })
         setFinal(final)
       }
-    } else {
+    } else
+    {
       setWarning("Բոլոր դաշտերը պարտադիր են")
     }
   }
 
-  function renderResult() {
+  function renderResult()
+  {
     let shouldBeRendered = null
-    if (warning) {
+    if (warning)
+    {
       shouldBeRendered = (
         <p>
           <span className={styles.error}>{warning}</span>
         </p>
       )
-    } else if (final) {
+    } else if (final)
+    {
       shouldBeRendered = (
         <div className={styles.paymentSchedule}>
           {Array.isArray(final)
             ? final.map((item, i) => (
-                <div key={i}>
-                  {i + 1}. {item}
-                </div>
-              ))
+              <div key={i}>
+                {i + 1}. {item}
+              </div>
+            ))
             : final}
         </div>
       )
@@ -66,7 +76,7 @@ const Calculator = ({ calculator, title }) => {
 
   return (
     <div className={styles.calculator}>
-      {title && <h2>{title}</h2>}
+      {title && <h2 className="pageTitle">{title}</h2>}
       <form onSubmit={calculate}>
         <div>
           <label>Վարկի գումար:</label>

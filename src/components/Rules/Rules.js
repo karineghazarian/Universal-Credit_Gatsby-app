@@ -4,11 +4,12 @@ import { getFile } from "../utils/getFile"
 
 import * as styles from "./Rules.module.css"
 
-const Rules = ({ rules, title, allFile }) => {
+const Rules = ({ rules, title, allFile }) =>
+{
   const file = getFile(allFile, rules.file.localFile___NODE)
   return (
     <div className={styles.termsContainer}>
-      {title && <h2 className={styles.rulesH2}>{title}</h2>}
+      {title && <h2 className="pageTitle">{title}</h2>}
       <div>
         <iframe
           style={{ height: "700px" }}

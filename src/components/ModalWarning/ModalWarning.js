@@ -3,11 +3,16 @@ import PropTypes from "prop-types"
 import Markdown from "../Markdown/Markdown"
 import ModalPortal from "../ModalPortal/ModalPortal"
 
-const ModalWarning = ({ modalWarning, title }) => {
+import * as styles from "./ModalWarning.module.css"
+
+const ModalWarning = ({ modalWarning, title }) =>
+{
   const [showModal, setShowModal] = React.useState(true)
 
-  React.useEffect(() => {
-    window.setTimeout(() => {
+  React.useEffect(() =>
+  {
+    window.setTimeout(() =>
+    {
       setShowModal(false)
     }, 10 * 1000)
   }, [])
@@ -15,7 +20,7 @@ const ModalWarning = ({ modalWarning, title }) => {
   return showModal ? (
     <ModalPortal header={title} onClose={() => setShowModal(false)}>
       <div>
-        <Markdown markdown={modalWarning} />
+        <Markdown markdown={modalWarning} className={styles.markdownContainer} />
       </div>
     </ModalPortal>
   ) : null

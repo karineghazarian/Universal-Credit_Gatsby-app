@@ -7,7 +7,7 @@ import * as styles from "./License.module.css"
 
 const License = ({ licenses, title, allFile }) => (
   <div className={styles.licenseContainer}>
-    {title && <h2>{title}</h2>}
+    {title && <h2 className="pageTitle">{title}</h2>}
     <div className={styles.licenseImagesContainer}>
       {licenses.map(license => (
         <GatsbyImage

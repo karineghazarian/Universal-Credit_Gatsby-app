@@ -63,6 +63,10 @@
   outline: none;
 }
 
+.logoContainer {
+  margin-left: 1rem;
+}
+
 .headerLogo {
   width: 200px;
   height: 60px;

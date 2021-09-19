@@ -1,7 +1,9 @@
 .termsContainer {
-  padding: 0rem 5.5rem;
+  padding: 2rem 5.5rem;
 }
 
-.rulesH2 {
-  margin-top: 45px;
+@media only screen and (max-width: 650px) {
+  .termsContainer {
+    padding: 2rem 0.2rem;;
+  }
 }

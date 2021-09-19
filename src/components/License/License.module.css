@@ -1,5 +1,5 @@
 .licenseContainer {
-  padding: 6rem;
+  padding: 2rem 6rem;
 }
 
 .licenseImagesContainer {
@@ -9,4 +9,14 @@
 
 .licenseImage:first-child {
   margin-right: 50px;
+}
+
+@media only screen and (max-width: 650px) {
+  .licenseContainer {
+    padding: 1.5rem;
+  }
+  .licenseImagesContainer {
+    display: flex;
+    flex-direction: column;
+  }
 }

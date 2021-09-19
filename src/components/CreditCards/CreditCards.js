@@ -8,7 +8,7 @@ import * as styles from "./CreditCards.module.css"
 
 const CreditCards = ({ cards, title, allFile }) => (
   <div className={styles.pattern}>
-    {title && <h2>{title}</h2>}
+    {title && <h2 className="pageTitle">{title}</h2>}
     <div className={styles.cardsContainer}>
       {cards?.map(card => (
         <Link

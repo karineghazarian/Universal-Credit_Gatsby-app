@@ -4,11 +4,14 @@ import PropTypes from "prop-types"
 
 import * as styles from "./ReportMonth.module.css"
 
-function ReportMonth({ data }) {
+function ReportMonth({ data })
+{
   const { docs, name } = data
 
-  function renderTheMonth(month) {
-    switch (month) {
+  function renderTheMonth(month)
+  {
+    switch (month)
+    {
       case "Jan":
         return "Հունվար"
       case "Feb":
@@ -38,7 +41,8 @@ function ReportMonth({ data }) {
     }
   }
 
-  function onClickHandler(e, doc) {
+  function onClickHandler(e, doc)
+  {
     e.preventDefault()
     FileSaver.saveAs(
       `${process.env.GATSBY_API_URL}${doc.file.url}`,
@@ -47,7 +51,7 @@ function ReportMonth({ data }) {
   }
 
   return (
-    <div style={{ padding: "20px 0" }}>
+    <div style={{ padding: "10px 0" }}>
       <span style={{ fontSize: 23 }}>{renderTheMonth(name)}</span>
       <hr />
       <div className={styles.monthlyReports}>

@@ -3,9 +3,11 @@ import PropTypes from "prop-types"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { getFile } from "../utils/getFile"
 
+import * as styles from "./Structure.module.css";
+
 const Structure = ({ structure, title, allFile }) => (
-  <div>
-    {title && <h2>{title}</h2>}
+  <div className={styles.structureContainer}>
+    {title && <h2 className="pageTitle">{title}</h2>}
     <GatsbyImage
       image={getImage(getFile(allFile, structure.cover.localFile___NODE))}
       alt={structure.cover.name}

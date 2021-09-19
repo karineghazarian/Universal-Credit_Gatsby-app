@@ -7,10 +7,8 @@
   border-radius: 3px;
 }
 
-.termH1 {
-  font-size: 1.5rem;
-  text-align: center;
-  padding: 0rem 2rem 1rem 2rem;
+.termsTitle {
+ max-width: 100%;
 }
 
 .termUl {
@@ -26,3 +24,10 @@
   color: #424242;
   display: inline-block;
 }
+
+@media only screen and (max-width: 650px) {
+  .termsContainer {
+    margin: 0;
+  }
+}
+

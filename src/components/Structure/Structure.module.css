@@ -1,0 +1,9 @@
+.structureContainer {
+    padding: 3rem 5rem;
+}
+
+@media only screen and (max-width: 650px) {
+    .structureContainer {
+      padding: 3rem 0;
+    }
+  }

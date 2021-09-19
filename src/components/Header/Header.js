@@ -127,7 +127,7 @@ const Header = () => {
               }`}
               style={hamburger ? style : {}}
             >
-              <Link to={headerLogo.link} title={headerLogo.link}>
+              <Link to={headerLogo.link} title={headerLogo.link} className={styles.logoContainer}>
                 <img
                   src={`${process.env.GATSBY_API_URL}${headerLogo.icon.url}`}
                   alt={headerLogo.icon.name}

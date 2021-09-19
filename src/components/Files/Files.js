@@ -6,7 +6,7 @@ import * as styles from "./Files.module.css"
 
 const Files = ({ files, title }) => (
   <div className={styles.filesContainer}>
-    {title && <h2>{title}</h2>}
+    {title && <h2 className="pageTitle">{title}</h2>}
     <ul className={styles.fileUl}>
       {files?.map((fileObj, i) => (
         <li key={`${fileObj.id}-${i}`} className={styles.fileLi}>

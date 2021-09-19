@@ -4,7 +4,8 @@ import Animated from "../Animated"
 import Portal from "../Portal"
 import "./ModalPortal.css"
 
-function ModalPortal({ onClose, header, children }) {
+function ModalPortal({ onClose, header, children })
+{
   return (
     <Portal>
       <div className="modal-backdrop" onClick={onClose}>
@@ -29,7 +30,7 @@ function ModalPortal({ onClose, header, children }) {
                   />
                 </div>
               )}
-              <div className="modal-content">{children}</div>
+              <div className="warning-modal-content">{children}</div>
             </div>
           )}
         </Animated>

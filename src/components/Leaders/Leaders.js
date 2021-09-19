@@ -6,10 +6,10 @@ import * as styles from "./Leaders.module.css"
 
 const Leaders = ({ leaders, title }) => (
   <div className={styles.leadersContainer}>
-    {title && <h2>{title}</h2>}
+    {title && <h2 className="pageTitle">{title}</h2>}
     {leaders.map(leader => (
       <div key={leader.title} className={styles.leadsContainer}>
-        {leader.title && <h2>{leader.title}</h2>}
+        {leader.title && <h2 className="pageTitle">{leader.title}</h2>}
         {leader.name && <h3>{leader.name}</h3>}
         <Markdown
           markdown={leader.markdown}

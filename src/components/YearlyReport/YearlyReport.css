@@ -1,9 +1,12 @@
-.quarterReportContainer {
+.yearlyReportContainer {
   padding: 2rem 5rem;
+}
+.yearlyReportTitle {
+  max-width: 100%;
 }
 
 @media only screen and (max-width: 930px) {
-  .quarterReportContainer {
+  .yearlyReportContainer {
     padding: 2rem 0.7rem;
   }
 }

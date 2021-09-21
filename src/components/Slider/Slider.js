@@ -24,6 +24,7 @@ const Slider = ({ slider, title, allFile }) => {
 
   return (
     <div className="hero-container">
+      {title && <h2 className="pageTitle">{title}</h2>}
       {slider.length > 1 ? (
         <Carousel
           slides={slides}

@@ -63,7 +63,7 @@ const Header = () => {
     setRotate(!rotate)
   }
 
-  const toggleMenu = e => {
+  const toggleMenu = () => {
     toggleIcon()
     if (show) {
       setOpen(!open)

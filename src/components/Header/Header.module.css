@@ -45,6 +45,8 @@
   transform: rotate(90deg);
 }
 
+.btnUnClicked {}
+
 .iconClose {
   font-size: 22px;
 }

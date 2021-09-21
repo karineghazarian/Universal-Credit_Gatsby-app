@@ -1,41 +1,48 @@
 import React from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 
-import { footerSelector } from "./selector"
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Markdown from "../Markdown/Markdown"
 
 import * as styles from "./Footer.module.css"
 
 const Footer = () => {
-  const data = useStaticQuery(graphql`
+  const {strapiFooter} = useStaticQuery(graphql`
     query MyFooter {
-      allStrapiFooter {
-        nodes {
-          navbarItems {
-            id
-            text
-            page {
-              path
-            }
-          }
-          markdownRemark {
-            markdown
-          }
-          footerLogo {
-            link
-            icon {
-              url
-              name
-            }
-          }
-          icons {
-            link
-            icon {
-              url
-              name
-            }
+      strapiFooter {
+        navbarItems {
+          id
+          text
+          page {
+            path
           }
         }
+        markdownRemark {
+          markdown
+        }
+        footerLogo {
+          link
+          icon {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(placeholder: BLURRED)
+              }
+            }
+            name
+          }
+        }
+        icons {
+          link
+          icon {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(placeholder: BLURRED)
+              }
+            }
+            name
+          }
+        }
+        
       }
     }
   `)
@@ -45,7 +52,7 @@ const Footer = () => {
     markdownRemark,
     icons = [],
     footerLogo = {},
-  } = footerSelector(data)
+  } = strapiFooter || {};
 
   return (
     <footer className={styles.footer}>
@@ -73,8 +80,8 @@ const Footer = () => {
       )}
       <div className={styles.footerCopywrite}>
         <Link to={footerLogo.link} title={footerLogo.link}>
-          <img
-            src={`${process.env.GATSBY_API_URL}${footerLogo.icon.url}`}
+          <GatsbyImage
+            image={getImage(footerLogo.icon.localFile)}
             alt={footerLogo.icon.name}
             className={styles.footerLogo}
           />
@@ -85,9 +92,9 @@ const Footer = () => {
             return (
               <li key={`${icon.id}-${link}`} className={styles.footerIcon}>
                 <a href={link} title={link} target="_blank" rel="noreferrer">
-                  <img
-                    src={`${process.env.GATSBY_API_URL}${icon.icon.url}`}
-                    alt={link}
+                  <GatsbyImage
+                    image={getImage(icon.icon.localFile)}
+                    alt={icon.icon.name}
                   />
                 </a>
               </li>

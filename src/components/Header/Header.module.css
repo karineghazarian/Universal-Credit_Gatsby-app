@@ -8,7 +8,7 @@
   background: #fff;
   width: 100%;
   font-size: 1em;
-  min-height: 50px;
+  height: 60px;
 }
 
 .header {
@@ -20,7 +20,7 @@
 
 .hamburgerHeader {
   position: fixed;
-  top: 50px;
+  top: 60px;
   left: 0;
   width: 40%;
   max-width: 400px;
@@ -111,6 +111,15 @@
 .active {
   color: #fff;
   background: #999;
+}
+
+@media only screen and (max-width: 1024px) {
+  .headerMain {
+    height: 50px;
+  }
+  .hamburgerHeader {
+    top: 50px;
+  }
 }
 
 @media only screen and (max-width: 1440px) {

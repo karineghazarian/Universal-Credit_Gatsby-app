@@ -3,35 +3,35 @@
   padding: 2rem;
 }
 
-.calculator form {
+.calculator > form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.calculator form > div,
-.requestModal form .input-container > div {
+.calculator > form > div,
+.requestModal > form > .input-container > div {
   display: flex;
   align-items: center;
   margin-bottom: 1.2rem;
 }
 
-.calculator label {
+.calculatorLabel {
   display: inline-block;
   width: 190px;
   /* font-size: 1rem; */
 }
 
-.calculator input {
+.calculator > form > div > input {
   text-align: right;
 }
 
-.calculator p {
+.calculator > form > div > p {
   margin-bottom: 0;
   margin-left: 10px;
 }
 
-.calculator p span.error {
+.calculator > form > div > p > span.error {
   color: #e53935;
 }
 
@@ -45,11 +45,11 @@
   border-radius: 3px;
 }
 
-.paymentSchedule div:first-of-type {
+.paymentSchedule > div:first-of-type {
   margin-top: 0;
 }
 
-.paymentSchedule div {
+.paymentSchedule > div {
   margin-top: 0.6rem;
 }
 
@@ -60,7 +60,6 @@ select {
   font-size: 0.9rem;
 }
 
-input,
 .uiSelect {
   display: inline-block;
   padding: 0.6rem 0.8rem;

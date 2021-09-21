@@ -1,45 +1,45 @@
 import React, { useState, useEffect } from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-import { headerSelector } from "./selector"
 import Animated from "../Animated"
 
 import * as styles from "./Header.module.css"
 
 const Header = () => {
-  const data = useStaticQuery(graphql`
+  const { strapiHeader } = useStaticQuery(graphql`
     query HeaderQuery {
-      allStrapiHeader {
-        nodes {
-          headerLogo {
-            link
-            icon {
-              url
-              name
+      strapiHeader {
+        headerLogo {
+          link
+          icon {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(placeholder: BLURRED)
+              }
             }
+            name
           }
-          navbarItems {
-            text
-            id
-            page {
-              path
-              title
-            }
+        }
+        navbarItems {
+          text
+          id
+          page {
+            path
+            title
           }
-          contactPhone {
-            link
-            text
-            id
-          }
+        }
+        contactPhone {
+          link
+          text
+          id
         }
       }
     }
   `)
-  const {
-    navbarItems = [],
-    headerLogo = {},
-    contactPhone = [],
-  } = headerSelector(data)
+
+  const { navbarItems = [], headerLogo = {}, contactPhone = [] } =
+    strapiHeader || {}
 
   const [hamburger, setHamburger] = useState(false)
   const [show, setShow] = useState(false)
@@ -127,9 +127,13 @@ const Header = () => {
               }`}
               style={hamburger ? style : {}}
             >
-              <Link to={headerLogo.link} title={headerLogo.link} className={styles.logoContainer}>
-                <img
-                  src={`${process.env.GATSBY_API_URL}${headerLogo.icon.url}`}
+              <Link
+                to={headerLogo.link}
+                title={headerLogo.link}
+                className={styles.logoContainer}
+              >
+                <GatsbyImage
+                  image={getImage(headerLogo.icon.localFile)}
                   alt={headerLogo.icon.name}
                   className={styles.headerLogo}
                 />

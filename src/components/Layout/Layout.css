@@ -23,7 +23,7 @@ body {
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  font: 125%/1em georgia, serif;
+  font: 110%/1em georgia, serif;
   line-height: 1.1;
 }
 
@@ -65,7 +65,7 @@ button {
 }
 
 .mainStyles {
-  padding-top: 70px;
+  padding-top: 60px;
   min-height: 100vh;
 }
 

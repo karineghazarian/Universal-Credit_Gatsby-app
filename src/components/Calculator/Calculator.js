@@ -79,7 +79,7 @@ const Calculator = ({ calculator, title }) =>
       {title && <h2 className="pageTitle">{title}</h2>}
       <form onSubmit={calculate}>
         <div>
-          <label>Վարկի գումար:</label>
+          <label className={styles.calculatorLabel}>Վարկի գումար:</label>
           <input
             value={amount || ""}
             type="number"
@@ -87,7 +87,7 @@ const Calculator = ({ calculator, title }) =>
           />
         </div>
         <div>
-          <label>Տարեկան %-դրույք:</label>
+          <label className={styles.calculatorLabel}>Տարեկան %-դրույք:</label>
           <input
             value={percent || ""}
             type="number"
@@ -95,7 +95,7 @@ const Calculator = ({ calculator, title }) =>
           />
         </div>
         <div>
-          <label>Մարման ժամկետ:</label>
+          <label className={styles.calculatorLabel}>Մարման ժամկետ:</label>
           <input
             value={months || ""}
             type="number"
@@ -104,7 +104,7 @@ const Calculator = ({ calculator, title }) =>
           />
         </div>
         <div>
-          <label>Մարման տեսակը:</label>
+          <label className={styles.calculatorLabel}>Մարման տեսակը:</label>
           <span className={styles.uiSelect}>
             <select value={type} onChange={e => setType(e.target.value)}>
               <option value="1">Հավասարաչափ մարումներով</option>

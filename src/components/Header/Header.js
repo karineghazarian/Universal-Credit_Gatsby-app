@@ -50,14 +50,14 @@ const Header = () => {
   const navRef = React.useRef()
   const timeoutIdRef = React.useRef()
 
-  const onResize = () => {
+  const onResize = React.useCallback(() => {
     const isSmall = window.innerWidth <= 1024
     if (!hamburger) {
       setHamburger(isSmall)
       setShow(!isSmall)
       setRotate(false)
     }
-  }
+  },[hamburger]);
 
   const toggleIcon = () => {
     setRotate(!rotate)
@@ -77,8 +77,11 @@ const Header = () => {
     setHamburger(isSmall)
     setShow(!isSmall)
     window.addEventListener("resize", onResize)
-    // eslint-disable-next-line
-  }, [])
+
+    return () => {
+      window.removeEventListener("resize", onResize)
+    }
+  }, [onResize])
 
   useEffect(() => {
     if (timeoutIdRef.current) {

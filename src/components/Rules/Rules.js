@@ -11,13 +11,13 @@ const Rules = ({ rules, title, allFile }) =>
     <div className={styles.termsContainer}>
       {title && <h2 className="pageTitle">{title}</h2>}
       <div>
-        <iframe
+         <iframe
           style={{ height: "700px" }}
           width="100%"
           height="100%"
           title="title"
-          src={`${process.env.GATSBY_URL}${file?.publicURL}`}
-        />
+          src={`${file?.publicURL}`}
+         />
       </div>
     </div>
   )

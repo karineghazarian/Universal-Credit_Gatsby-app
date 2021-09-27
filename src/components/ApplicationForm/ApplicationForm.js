@@ -47,12 +47,12 @@ const ApplicationForm = ({ form, title }) => {
 
   return (
     <div className="pattern request">
-      <button onClick={e => setOpened(true)} type="submit">
+      <button onClick={() => setOpened(true)} type="submit" className="appFormButton">
         Հայտի Դիմում
       </button>
       <div
         className={`backdrop ${opened ? "opened" : ""}`}
-        onClick={e => setOpened(false)}
+        onClick={() => setOpened(false)}
       >
         <div onClick={e => e.stopPropagation()} className="modal request-modal">
           <div className="modal-header">{title}</div>
@@ -71,13 +71,13 @@ const ApplicationForm = ({ form, title }) => {
                       onChange={handleChange}
                       id={inputItem.item}
                       name={inputItem.placeholder}
-                      className="input"
+                      className="appFormInput"
                     />
                   </div>
                 ))}
               </div>
-              <hr />
-              <button type="submit" className="appFormButton">
+              <hr className="appFormHr"/>
+              <button type="submit" className="appFormSubmit">
                 Դիմել
               </button>
             </form>

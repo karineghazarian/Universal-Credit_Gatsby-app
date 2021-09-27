@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-const Map = ({ src, title }) => (
+const Map = ({ src }) => (
   <iframe
     src={src}
     width="100%"
@@ -13,13 +13,8 @@ const Map = ({ src, title }) => (
   />
 )
 
-Map.defaultProps = {
-  title: "",
-}
-
 Map.propTypes = {
-  src: PropTypes.string.isRequired,
-  title: PropTypes.string,
+  src: PropTypes.string.isRequired
 }
 
 Map.displayName = "Map"

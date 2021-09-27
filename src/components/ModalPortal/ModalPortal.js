@@ -30,7 +30,7 @@ function ModalPortal({ onClose, header, children })
                   />
                 </div>
               )}
-              <div className="warning-modal-content">{children}</div>
+              <div className="warning-modal-content">{children}</div> 
             </div>
           )}
         </Animated>

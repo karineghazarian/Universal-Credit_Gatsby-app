@@ -84,6 +84,7 @@ const Calculator = ({ calculator, title }) =>
             value={amount || ""}
             type="number"
             onChange={e => setAmount(+e.target.value)}
+            className={styles.calculatorInput}
           />
         </div>
         <div>
@@ -92,6 +93,7 @@ const Calculator = ({ calculator, title }) =>
             value={percent || ""}
             type="number"
             onChange={e => setPercent(+e.target.value)}
+            className={styles.calculatorInput}
           />
         </div>
         <div>
@@ -101,19 +103,20 @@ const Calculator = ({ calculator, title }) =>
             type="number"
             placeholder="ամիսներ"
             onChange={e => setMonths(+e.target.value)}
+            className={styles.calculatorInput}
           />
         </div>
         <div>
           <label className={styles.calculatorLabel}>Մարման տեսակը:</label>
           <span className={styles.uiSelect}>
-            <select value={type} onChange={e => setType(e.target.value)}>
+            <select value={type} onChange={e => setType(e.target.value)} className={styles.calculatorSelect}>
               <option value="1">Հավասարաչափ մարումներով</option>
               <option value="2">Մայր գումարի հավասարաչափ մարումներով</option>
             </select>
           </span>
         </div>
         <div>
-          <button type="submit">Հաշվել</button>
+          <button type="submit" className={styles.calculatorSubmit}>Հաշվել</button>
           {renderResult()}
         </div>
       </form>

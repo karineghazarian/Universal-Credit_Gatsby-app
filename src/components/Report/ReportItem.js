@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import PropTypes from "prop-types"
 import FileSaver from "file-saver"
 
@@ -13,14 +13,14 @@ function ReportItem({ months, yearlyReports, type, title }) {
   const [itemLength, setItemLength] = useState(null)
   const timeoutIdRef = useRef();
 
-  function onResize() {
+  const onResize = useCallback(()=> {
     setOpen(false)
     if (window.innerWidth >= 800 && itemLength !== 250) {
       setItemLength(months ? 250 : 50)
     } else if (window.innerWidth < 800 && itemLength !== 390) {
       setItemLength(months ? 390 : 80)
     }
-  }
+  }, [itemLength, months])
 
   function showHandler() {
     setOpen(!open)

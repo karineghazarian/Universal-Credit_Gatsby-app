@@ -1,3 +1,8 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: "Universal Credit",
@@ -31,7 +36,7 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
-        apiURL: process.env.GATSBY_API_URL || "http://localhost:1337",
+        apiURL: process.env.GATSBY_API_URL,
         collectionTypes: ["page"],
         singleTypes: ["header", "footer"],
         queryLimit: 1000,

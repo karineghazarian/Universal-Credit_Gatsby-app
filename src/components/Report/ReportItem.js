@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react"
 import PropTypes from "prop-types"
 import FileSaver from "file-saver"
 
@@ -11,16 +11,16 @@ function ReportItem({ months, yearlyReports, type, title }) {
   const [open, setOpen] = useState(false)
   const [show, setShow] = useState(false)
   const [itemLength, setItemLength] = useState(null)
-  const timeoutIdRef = useRef();
+  const timeoutIdRef = useRef()
 
-  const onResize = useCallback(()=> {
+  function onResize() {
     setOpen(false)
     if (window.innerWidth >= 800 && itemLength !== 250) {
       setItemLength(months ? 250 : 50)
     } else if (window.innerWidth < 800 && itemLength !== 390) {
       setItemLength(months ? 390 : 80)
     }
-  }, [itemLength, months])
+  }
 
   function showHandler() {
     setOpen(!open)
@@ -45,7 +45,7 @@ function ReportItem({ months, yearlyReports, type, title }) {
     return () => {
       window.removeEventListener("resize", onResize)
     }
-  }, [months, onResize])
+  }, [months])
 
   useEffect(() => {
     if (timeoutIdRef.current) {
@@ -124,5 +124,7 @@ ReportItem.propTypes = {
   yearlyReports: PropTypes.array,
   type: PropTypes.string.isRequired,
 }
+
+ReportItem.displayName = "ReportItem"
 
 export default ReportItem

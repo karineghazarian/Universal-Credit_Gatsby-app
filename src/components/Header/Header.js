@@ -46,18 +46,16 @@ const Header = () => {
   const [open, setOpen] = useState(false)
   const [rotate, setRotate] = useState(null)
 
-  const navContainerRef = React.useRef()
-  const navRef = React.useRef()
   const timeoutIdRef = React.useRef()
 
-  const onResize = React.useCallback(() => {
+  function onResize() {
     const isSmall = window.innerWidth <= 1024
     if (!hamburger) {
       setHamburger(isSmall)
       setShow(!isSmall)
       setRotate(false)
     }
-  },[hamburger]);
+  }
 
   const toggleIcon = () => {
     setRotate(!rotate)
@@ -81,7 +79,7 @@ const Header = () => {
     return () => {
       window.removeEventListener("resize", onResize)
     }
-  }, [onResize])
+  }, [])
 
   useEffect(() => {
     if (timeoutIdRef.current) {
@@ -142,20 +140,13 @@ const Header = () => {
                 />
               </Link>
               <div
-                ref={navContainerRef}
                 className={styles.navContainer}
                 style={{
-                  boxShadow:
-                    navRef.current?.offsetWidth >
-                    navContainerRef.current?.offsetWidth
-                      ? "inset 0 2px 5px 0 rgba(0, 0, 0, 0.14)"
-                      : "none",
                   ...(hamburger ? {} : { margin: "0 auto" }),
                 }}
               >
                 <nav
                   className={styles.headerNavbar}
-                  ref={navRef}
                   style={
                     hamburger
                       ? {

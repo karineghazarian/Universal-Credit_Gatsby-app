@@ -39,8 +39,6 @@ function ModalPortal({ onClose, header, children })
   )
 }
 
-export default ModalPortal
-
 ModalPortal.propTypes = {
   onClose: PropTypes.func.isRequired,
   header: PropTypes.string.isRequired,
@@ -49,3 +47,9 @@ ModalPortal.propTypes = {
     PropTypes.node,
   ]).isRequired,
 }
+
+ModalPortal.displayName = "ModalPortal"
+
+export default ModalPortal
+
+

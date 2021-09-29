@@ -10,7 +10,7 @@ const Terms = ({ terms, title }) => (
       {terms.map(item => (
         <li key={item.id} className={styles.termLi}>
           <a
-            href={`${process.env.GATSBY_API_URL}${item.file.url}`}
+            href={`${item.file.url}`}
             target="__blank"
             className={styles.termLink}
           >

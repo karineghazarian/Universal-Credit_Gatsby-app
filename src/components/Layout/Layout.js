@@ -34,4 +34,6 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
+Layout.displayName = "Layout"
+
 export default Layout

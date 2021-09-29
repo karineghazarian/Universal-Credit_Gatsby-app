@@ -1,5 +1,5 @@
 .leadersContainer {
-  padding: 2rem 5rem;
+  padding: 2rem;
 }
 
 .leadsContainer {
@@ -19,7 +19,7 @@
   margin: 2rem 0rem;
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 768px) {
   .leadersContainer {
     padding: 2rem 0.7rem;
   }

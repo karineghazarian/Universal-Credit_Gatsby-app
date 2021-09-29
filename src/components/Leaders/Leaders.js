@@ -29,6 +29,6 @@ Leaders.propTypes = {
   title: PropTypes.string,
 }
 
-Leaders.displayName = Leaders
+Leaders.displayName = "Leaders"
 
 export default React.memo(Leaders)

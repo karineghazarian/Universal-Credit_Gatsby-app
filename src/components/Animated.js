@@ -37,4 +37,6 @@ const Animated = props => {
   return props.children(animatedProps)
 }
 
+Animated.displayName = "Animated"
+
 export default Animated

@@ -5,7 +5,7 @@ import * as styles from "./Files.module.css"
 
 const File = ({ fileObj }) => (
   <a
-    href={`${process.env.GATSBY_API_URL}${fileObj.file.url}`}
+    href={`${fileObj.file.url}`}
     target="__blank"
     className={styles.fileLink}
   >
@@ -16,5 +16,7 @@ const File = ({ fileObj }) => (
 File.propTypes = {
   fileObj: PropTypes.object.isRequired,
 }
+
+File.displayName = "File"
 
 export default React.memo(File)

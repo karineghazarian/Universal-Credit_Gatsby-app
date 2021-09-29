@@ -76,4 +76,6 @@ ReportMonth.propTypes = {
   }).isRequired,
 }
 
+ReportMonth.displayName = "ReportMonth"
+
 export default ReportMonth

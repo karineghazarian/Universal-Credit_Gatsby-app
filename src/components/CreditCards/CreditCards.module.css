@@ -48,7 +48,7 @@
     transform: scale(1.2);
   }
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 930px) {
     .cardsContainer {
         flex-direction: column;
     }

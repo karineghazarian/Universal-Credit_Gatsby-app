@@ -245,4 +245,6 @@ DynamicContent.propTypes = {
   allFile: PropTypes.array.isRequired,
 }
 
+DynamicContent.displayName = "DynamicContent"
+
 export default React.memo(DynamicContent)

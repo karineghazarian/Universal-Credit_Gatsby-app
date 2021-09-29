@@ -25,7 +25,7 @@
   display: inline-block;
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 768px) {
   .termsContainer {
     margin: 0;
   }

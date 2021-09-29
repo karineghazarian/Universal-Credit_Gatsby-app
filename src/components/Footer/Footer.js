@@ -1,13 +1,13 @@
 import React from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Markdown from "../Markdown/Markdown"
 
 import * as styles from "./Footer.module.css"
 
 const Footer = () => {
-  const {strapiFooter} = useStaticQuery(graphql`
+  const { strapiFooter } = useStaticQuery(graphql`
     query MyFooter {
       strapiFooter {
         navbarItems {
@@ -42,17 +42,12 @@ const Footer = () => {
             name
           }
         }
-        
       }
     }
   `)
 
-  const {
-    navbarItems = [],
-    markdownRemark,
-    icons = [],
-    footerLogo = {},
-  } = strapiFooter || {};
+  const { navbarItems = [], markdownRemark, icons = [], footerLogo = {} } =
+    strapiFooter || {}
 
   return (
     <footer className={styles.footer}>
@@ -87,19 +82,21 @@ const Footer = () => {
           />
         </Link>
         <ul className={styles.footerIcons}>
-          {icons?.map(icon => {
-            const link = icon.link.replace("/", "")
-            return (
-              <li key={`${icon.id}-${link}`} className={styles.footerIcon}>
-                <a href={link} title={link} target="_blank" rel="noreferrer">
-                  <GatsbyImage
-                    image={getImage(icon.icon.localFile)}
-                    alt={icon.icon.name}
-                  />
-                </a>
-              </li>
-            )
-          })}
+          {icons?.map(icon => (
+            <li key={`${icon.id}-${icon.link}`} className={styles.footerIcon}>
+              <a
+                href={icon.link}
+                title={icon.link}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <GatsbyImage
+                  image={getImage(icon.icon.localFile)}
+                  alt={icon.icon.name}
+                />
+              </a>
+            </li>
+          ))}
         </ul>
         <span>© {new Date().getFullYear()}, Universal Credit</span>
       </div>

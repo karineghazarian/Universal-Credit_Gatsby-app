@@ -62,11 +62,9 @@
 }
 
 .modal-head {
-  /*background-color: #888888;*/
   text-align: center;
   border-radius: 2px 2px 0 0;
-  /*color: #ffff;*/
-  padding: 20px 0;
+  padding: 20px 0 0 0;
   text-transform: capitalize;
   position: relative;
 }
@@ -83,6 +81,7 @@
   line-height: 1.4;
   max-height: 70%;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 @media screen and (max-width: 768px) {
@@ -92,7 +91,7 @@
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 768px) {
   .warning-modal-content {
     padding: 0;
   }

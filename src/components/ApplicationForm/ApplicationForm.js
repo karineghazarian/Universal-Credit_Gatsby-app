@@ -70,6 +70,7 @@ const ApplicationForm = ({ form, title }) => {
                       value={inputValues[inputItem.item]}
                       onChange={handleChange}
                       id={inputItem.item}
+                      type={inputItem.type}
                       name={inputItem.placeholder}
                       className="appFormInput"
                     />

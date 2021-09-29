@@ -60,6 +60,7 @@
   padding: 1rem 1.5rem;
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .request-modal > .modal-content > form .input-container {

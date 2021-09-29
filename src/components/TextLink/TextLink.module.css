@@ -1,32 +1,30 @@
-.termsContainer {
+.textLinkContainer {
   margin: 2rem 5rem 30px;
-  box-shadow: 0 2px 7px 0 rgba(60, 64, 67, 0.3),
-    0 2px 12px 5px rgba(60, 64, 67, 0.15);
   padding: 15px 20px;
   border-radius: 3px;
 }
 
-.termsTitle {
- max-width: 100%;
+
+.textLinkTitle {
+  max-width: 100%;
 }
 
-.termUl {
+.textLinkUl {
   padding: 0rem 2rem;
 }
 
-.termLi {
+.textLinkLi {
   margin-bottom: 1.25rem;
 }
 
-.termLink {
+.textLink {
   text-decoration: none;
   color: #424242;
   display: inline-block;
 }
 
 @media only screen and (max-width: 768px) {
-  .termsContainer {
+  .textLinkContainer {
     margin: 0 0 1rem 0;
   }
 }
-

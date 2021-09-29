@@ -17,6 +17,7 @@ import Terms from "../Terms/Terms"
 import Leaders from "../Leaders/Leaders"
 import License from "../License/License"
 import Structure from "../Structure/Structure"
+import TextLink from "../TextLink/TextLink"
 
 const CONTENT = {
   SLIDE: "Slide",
@@ -35,6 +36,7 @@ const CONTENT = {
   LEADERS: "Leaders",
   LICENSE: "License",
   STRUCTURE: "Structure",
+  TEXT_LINK: "TextLink"
 }
 
 const DynamicContent = ({ content, allFile }) => {
@@ -210,6 +212,16 @@ const DynamicContent = ({ content, allFile }) => {
           },
         })
         break
+      case CONTENT.TEXT_LINK:
+        components.push({
+          Component: TextLink,
+          props: {
+            key,
+            textLinks: value,
+            title: content.title
+          },
+        })
+        break
       default:
         break
     }
@@ -241,6 +253,7 @@ DynamicContent.propTypes = {
     Leaders: PropTypes.array,
     License: PropTypes.array,
     Structure: PropTypes.object,
+    TextLink: PropTypes.array,
   }).isRequired,
   allFile: PropTypes.array.isRequired,
 }

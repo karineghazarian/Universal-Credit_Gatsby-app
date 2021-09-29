@@ -13,15 +13,6 @@ function ReportItem({ months, yearlyReports, type, title }) {
   const [itemLength, setItemLength] = useState(null)
   const timeoutIdRef = useRef()
 
-  function onResize() {
-    setOpen(false)
-    if (window.innerWidth >= 800 && itemLength !== 250) {
-      setItemLength(months ? 250 : 50)
-    } else if (window.innerWidth < 800 && itemLength !== 390) {
-      setItemLength(months ? 390 : 80)
-    }
-  }
-
   function showHandler() {
     setOpen(!open)
   }
@@ -35,6 +26,15 @@ function ReportItem({ months, yearlyReports, type, title }) {
   }
 
   useEffect(() => {
+    function onResize() {
+      setOpen(false)
+      if (window.innerWidth >= 800 && itemLength !== 250) {
+        setItemLength(months ? 250 : 50)
+      } else if (window.innerWidth < 800 && itemLength !== 390) {
+        setItemLength(months ? 390 : 80)
+      }
+    }
+
     window.addEventListener("resize", onResize)
 
     if (window.innerWidth >= 800) {
@@ -45,7 +45,8 @@ function ReportItem({ months, yearlyReports, type, title }) {
     return () => {
       window.removeEventListener("resize", onResize)
     }
-  }, [months])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => {
     if (timeoutIdRef.current) {

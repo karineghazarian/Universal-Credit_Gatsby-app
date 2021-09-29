@@ -48,14 +48,7 @@ const Header = () => {
 
   const timeoutIdRef = React.useRef()
 
-  function onResize() {
-    const isSmall = window.innerWidth <= 1024
-    if (!hamburger) {
-      setHamburger(isSmall)
-      setShow(!isSmall)
-      setRotate(false)
-    }
-  }
+
 
   const toggleIcon = () => {
     setRotate(!rotate)
@@ -71,6 +64,15 @@ const Header = () => {
   }
 
   useEffect(() => {
+    function onResize() {
+      const isSmall = window.innerWidth <= 1024
+      if (!hamburger) {
+        setHamburger(isSmall)
+        setShow(!isSmall)
+        setRotate(false)
+      }
+    }
+
     const isSmall = window.innerWidth <= 1024
     setHamburger(isSmall)
     setShow(!isSmall)
@@ -79,6 +81,7 @@ const Header = () => {
     return () => {
       window.removeEventListener("resize", onResize)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {

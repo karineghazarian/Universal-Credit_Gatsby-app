@@ -16,7 +16,7 @@ function ReportMonth({ data })
         return "Հունվար"
       case "Feb":
         return "Փետրվար"
-      case "March։":
+      case "March":
         return "Մարտ"
       case "Ap":
         return "Ապրիլ"
@@ -45,7 +45,7 @@ function ReportMonth({ data })
   {
     e.preventDefault()
     FileSaver.saveAs(
-      `${process.env.GATSBY_API_URL}${doc.file.url}`,
+      `${doc.file.url}`,
       `${doc.file.name}${doc.file.ext}`
     )
   }

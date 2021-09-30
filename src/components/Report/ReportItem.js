@@ -20,7 +20,7 @@ function ReportItem({ months, yearlyReports, type, title }) {
   function onClickHandler(e, doc) {
     e.preventDefault()
     FileSaver.saveAs(
-      `${process.env.GATSBY_API_URL}${doc.file.url}`,
+      `${doc.file.url}`,
       `${doc.file.name}${doc.file.ext}`
     )
   }
@@ -50,18 +50,18 @@ function ReportItem({ months, yearlyReports, type, title }) {
 
   useEffect(() => {
     if (timeoutIdRef.current) {
-      clearTimeout(timeoutIdRef.current)
+      window.clearTimeout(timeoutIdRef.current)
     }
     if (open) {
       setShow(true)
     } else {
       setOpen(false)
-      timeoutIdRef.current = setTimeout(() => {
+      timeoutIdRef.current = window.setTimeout(() => {
         setShow(false)
       }, 700)
     }
     return () => {
-      clearTimeout(timeoutIdRef.current)
+      window.clearTimeout(timeoutIdRef.current)
     }
   }, [open])
 

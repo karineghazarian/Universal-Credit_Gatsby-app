@@ -35,7 +35,7 @@ const QuarterReport = ({ reports, title }) =>
         )
         return {
           name: month,
-          docs: monthFilteredReports.map(filteredReport => ({
+          docs: monthFilteredReports.reverse().map(filteredReport => ({
             name: filteredReport.text,
             file: filteredReport.file,
           })),

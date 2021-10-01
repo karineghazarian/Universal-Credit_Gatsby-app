@@ -1,0 +1,66 @@
+.reportItemContainer > hr {
+  padding: 0;
+  margin: 0 0 calc(1.45rem - 1px);
+  background: rgba(0,0,0,.2);
+  border: none;
+  height: 1px;
+}
+
+.reportYear {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  padding-bottom: 0.5rem;
+}
+
+.reportYear strong {
+  font-size: 1.5rem;
+}
+
+.reportYear i {
+  margin-left: 0.5rem;
+}
+
+.reportYear strong,
+.reportYear i {
+  color: #6e6e6e;
+  transition: color 0.3s ease-out;
+}
+.reportYear:hover strong,
+.reportYear:hover i {
+  color: #6e6e6e;
+}
+
+.report {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.yearlyReportItem {
+  cursor: pointer;
+  color: #6e6e6e;
+  line-height: 1.45;
+}
+
+
+.yearlyReportItem:hover {
+  background: #e4e4e4;
+}
+
+.yearlyReportDate {
+  line-height: 1.45;
+  display: block;
+  margin-top: 0.4rem;
+}
+
+@media only screen and (max-width: 930px) {
+  .yearlyReportItem {
+    font-size: 1rem;
+    line-height: 1.1;
+  }
+
+  .reportYear strong {
+    font-size: 1.2rem
+  }
+}

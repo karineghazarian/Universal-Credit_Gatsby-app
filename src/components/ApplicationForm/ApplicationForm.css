@@ -93,6 +93,10 @@
   margin-top: 10px;
 }
 
+.request-modal > .modal-content > form > .input-container > div > input:hover {
+  box-shadow: 0 2px 7px 0 rgba(60, 64, 67, 0.3), 0 2px 12px 5px rgba(60, 64, 67, 0.15);
+}
+
 .appFormInput::-webkit-input-placeholder {
   font-size: 1rem;
   line-height: 3;

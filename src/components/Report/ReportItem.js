@@ -5,13 +5,13 @@ import FileSaver from "file-saver"
 import Animated from "../Animated"
 import ReportMonth from "./ReportMonth"
 
-import "./ReportItem.css"
+import * as styles from "./ReportItem.module.css"
 
 function ReportItem({ months, yearlyReports, type, title }) {
   const [open, setOpen] = useState(false)
   const [show, setShow] = useState(false)
   const [itemLength, setItemLength] = useState(null)
-  const timeoutIdRef = useRef()
+  const timeoutIdRef = useRef(0)
 
   function showHandler() {
     setOpen(!open)
@@ -19,28 +19,25 @@ function ReportItem({ months, yearlyReports, type, title }) {
 
   function onClickHandler(e, doc) {
     e.preventDefault()
-    FileSaver.saveAs(
-      `${doc.file.url}`,
-      `${doc.file.name}${doc.file.ext}`
-    )
+    FileSaver.saveAs(doc.file.url, doc.file.name);
   }
 
   useEffect(() => {
     function onResize() {
       setOpen(false)
-      if (window.innerWidth >= 800 && itemLength !== 250) {
-        setItemLength(months ? 250 : 50)
-      } else if (window.innerWidth < 800 && itemLength !== 390) {
-        setItemLength(months ? 390 : 80)
+      if (window.innerWidth >= 930 && itemLength !== 260) {
+        setItemLength(months.length ? 260 : 60)
+      } else if (window.innerWidth < 930 && itemLength !== 240) {
+        setItemLength(months.length ? 240 : 80)
       }
     }
 
     window.addEventListener("resize", onResize)
 
-    if (window.innerWidth >= 800) {
-      setItemLength(months ? 250 : 55)
-    } else if (window.innerWidth < 800) {
-      setItemLength(months ? 390 : 80)
+    if (window.innerWidth >= 930) {
+      setItemLength(months.length ? 260 : 60)
+    } else if (window.innerWidth < 930) {
+      setItemLength(months.length ? 240 : 80)
     }
     return () => {
       window.removeEventListener("resize", onResize)
@@ -66,9 +63,9 @@ function ReportItem({ months, yearlyReports, type, title }) {
   }, [open])
 
   return (
-    <>
+    <div className={styles.reportItemContainer}>
       <div>
-        <div className="report-year" onClick={showHandler}>
+        <div className={styles.reportYear} onClick={showHandler}>
           <strong>{title}</strong>
           <i className={open ? "icon-circle-up" : "icon-circle-down"} />
         </div>
@@ -83,21 +80,21 @@ function ReportItem({ months, yearlyReports, type, title }) {
               }}
               inverse={!open}
             >
-              {syle => (
-                <div style={syle}>
+              {style => (
+                <div style={style}>
                   {type === "monthly"
-                    ? months.map((report, index) => (
-                        <ReportMonth key={report.name + index} data={report} />
+                    ? months.map((report, i) => (
+                        <ReportMonth key={`${report.name}-${i}`} data={report} />
                       ))
-                    : yearlyReports.map((report, index) => (
-                        <div key={report.name + index}>
-                          <strong className="yearly-report-date">
+                    : yearlyReports.map((report, i) => (
+                        <div key={`${report.name}-${i}`} className={styles.report}>
+                          <strong className={styles.yearlyReportDate}>
                             {report.year}
-                          </strong>{" "}
+                          </strong>
                           <span
                             onClick={e => onClickHandler(e, report)}
-                            style={{ cursor: "pointer" }}
-                            className="yearly-report-item"
+                            title={report.name}
+                            className={styles.yearlyReportItem}
                           >
                             {report.name}
                           </span>
@@ -110,7 +107,7 @@ function ReportItem({ months, yearlyReports, type, title }) {
         </div>
       </div>
       <hr />
-    </>
+    </div>
   )
 }
 

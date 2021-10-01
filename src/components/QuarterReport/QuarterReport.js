@@ -59,7 +59,7 @@ const QuarterReport = ({ reports, title }) =>
         }))
         .map((report, i) => (
           <ReportItem
-            key={report.year + i}
+            key={`${report.year}-${i}`}
             title={`${report.year} ՀԱՇՎԵՏՎՈՒԹՅՈՒՆՆԵՐ /միջանկյալ ֆինանսական/`}
             year={report.year}
             months={report.months}

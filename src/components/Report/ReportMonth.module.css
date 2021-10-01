@@ -1,12 +1,52 @@
+.reportMonthContainer {
+  padding: 20px 0;
+}
+
+.reportMonthContainer > hr {
+  padding: 0;
+  margin: 0 0 calc(1.45rem - 1px);
+  background: rgba(0,0,0,.2);
+  border: none;
+  height: 1px;
+}
+
+.reportMonthName {
+  font-size: 1.3rem;
+}
+
 .monthlyReports {
   cursor: pointer;
   color: #424242;
   line-height: 1.45;
+  font-size: 1rem;
+}
+
+.report {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.monthlyReportItem {
+  cursor: pointer;
+}
+
+.monthlyReportItem:hover {
+  background: #e4e4e4;
 }
 
 @media only screen and (max-width: 930px) {
   .monthlyReports {
-    font-size: 1rem;
-    line-height: 1.1;
+    font-size: 0.95rem;
+  }
+
+  .reportMonthName {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .monthlyReports {
+    font-size: 0.9rem;
   }
 }

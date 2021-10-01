@@ -4,14 +4,11 @@ import PropTypes from "prop-types"
 
 import * as styles from "./ReportMonth.module.css"
 
-function ReportMonth({ data })
-{
+function ReportMonth({ data }) {
   const { docs, name } = data
 
-  function renderTheMonth(month)
-  {
-    switch (month)
-    {
+  function renderTheMonth(month) {
+    switch (month) {
       case "Jan":
         return "Հունվար"
       case "Feb":
@@ -41,27 +38,25 @@ function ReportMonth({ data })
     }
   }
 
-  function onClickHandler(e, doc)
-  {
+  function onClickHandler(e, doc) {
     e.preventDefault()
-    FileSaver.saveAs(
-      `${doc.file.url}`,
-      `${doc.file.name}${doc.file.ext}`
-    )
+    FileSaver.saveAs(doc.file.url, doc.file.name)
   }
 
   return (
-    <div style={{ padding: "10px 0" }}>
-      <span style={{ fontSize: 23 }}>{renderTheMonth(name)}</span>
+    <div className={styles.reportMonthContainer}>
+      <span className={styles.reportMonthName}>{renderTheMonth(name)}</span>
       <hr />
       <div className={styles.monthlyReports}>
-        {docs.map((doc, index) => (
-          <div
-            key={doc.name + index}
-            onClick={e => onClickHandler(e, doc)}
-            style={{ cursor: "pointer" }}
-          >
-            {doc.name}
+        {docs.map((report, i) => (
+          <div key={`${report.name}-${i}`} className={styles.report}>
+            <span
+              onClick={e => onClickHandler(e, report)}
+              title={report.name}
+              className={styles.monthlyReportItem}
+            >
+             {report.name}
+            </span>
           </div>
         ))}
       </div>

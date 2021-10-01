@@ -28,7 +28,7 @@ function ReportItem({ months, yearlyReports, type, title }) {
       if (window.innerWidth >= 930 && itemLength !== 260) {
         setItemLength(months.length ? 260 : 60)
       } else if (window.innerWidth < 930 && itemLength !== 240) {
-        setItemLength(months.length ? 240 : 80)
+        setItemLength(months.length ? 240 : 60)
       }
     }
 
@@ -37,7 +37,7 @@ function ReportItem({ months, yearlyReports, type, title }) {
     if (window.innerWidth >= 930) {
       setItemLength(months.length ? 260 : 60)
     } else if (window.innerWidth < 930) {
-      setItemLength(months.length ? 240 : 80)
+      setItemLength(months.length ? 240 : 60)
     }
     return () => {
       window.removeEventListener("resize", onResize)

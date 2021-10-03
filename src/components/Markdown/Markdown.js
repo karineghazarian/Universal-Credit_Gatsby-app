@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import rehypeRaw from "rehype-raw"
 import ReactMarkdown from "react-markdown"
 
-import "./Markdown.css"
+import * as styles from  "./Markdown.module.css"
 
 const Markdown = ({ markdown, className, title }) =>
 {
@@ -14,14 +14,13 @@ const Markdown = ({ markdown, className, title }) =>
   )
 
   return (
-    <div className={`${className} markdownContainer`}>
+    <div className={`${className} ${styles.markdownContainer}`}>
       {title && <h2 className="pageTitle">{title}</h2>}
       <ReactMarkdown
         transformImageUri={transformImageUri}
         skipHtml={false}
         rehypePlugins={[rehypeRaw]}
-        className="reactMarkDown"
-        style={{ padding: "2rem, 5rem", textAlign: "center" }}
+        className={styles.reactMarkDown}
       >
         {markdown}
       </ReactMarkdown>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 
-import "./Rates.css"
+import * as styles from "./Rates.module.css"
 
 const Rates = ({ src }) => {
   const [protocol, setProtocol] = useState(null)
@@ -20,6 +20,7 @@ const Rates = ({ src }) => {
         src={`${protocol}${src.rateSrc}`}
         width="200px"
         height="150px"
+        className={styles.rateWidget}
       />
     )
   )

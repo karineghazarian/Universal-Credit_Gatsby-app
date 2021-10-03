@@ -14,7 +14,7 @@
 }
 
 .reportYear strong {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .reportYear i {
@@ -28,7 +28,7 @@
 }
 .reportYear:hover strong,
 .reportYear:hover i {
-  color: #6e6e6e;
+  color: #424242;
 }
 
 .report {

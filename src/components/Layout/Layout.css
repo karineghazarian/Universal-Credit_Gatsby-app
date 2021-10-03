@@ -4,6 +4,15 @@
   --md: 600px;
 }
 
+* {
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 0 0 0 1.45rem;
+}
+
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -23,18 +32,11 @@ body {
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  font: 110%/1em georgia, serif;
-  line-height: 1.1;
+  font: 110%/1.45em georgia, serif;
 }
 
 a {
   text-decoration: none;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
 }
 
 iframe {
@@ -66,7 +68,7 @@ button {
 
 .mainStyles {
   padding-top: 70px;
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 @font-face {
@@ -84,6 +86,7 @@ button {
 
 [class^="icon-"],
 [class*=" icon-"] {
+  cursor: pointer;
   font-family: "icomoon" !important;
   speak: none;
   font-style: normal;

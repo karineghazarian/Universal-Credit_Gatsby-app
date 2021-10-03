@@ -9,8 +9,10 @@
   box-sizing: border-box;
 }
 
-ul {
-  margin: 0 0 0 1.45rem;
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font: 110%/1.45em georgia, serif;
 }
 
 body {
@@ -29,10 +31,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-html {
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  font: 110%/1.45em georgia, serif;
+ul {
+  margin: 0 0 0 1.45rem;
 }
 
 a {
@@ -40,14 +40,8 @@ a {
 }
 
 iframe {
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  margin-bottom: 1.45rem;
+  padding: 0;
+  margin: 0 0 1.45rem;
 }
 
 button {
@@ -68,7 +62,6 @@ button {
 
 .mainStyles {
   padding-top: 70px;
-  min-height: 50vh;
 }
 
 @font-face {
@@ -134,11 +127,12 @@ button {
   margin: 0 auto 2.5rem;
   padding-bottom: 2.5rem;
   max-width: 500px;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-weight: 700;
   font-size: 1.8rem;
   text-rendering: optimizeLegibility;
-  line-height: 1.1
+  line-height: 1.1;
 }
 
 @media only screen and (max-width: 1024px) {

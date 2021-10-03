@@ -20,10 +20,7 @@ const Layout = ({ children }) => (
       <script src="//code.jivosite.com/widget/J1pQ8q6Oqr" async />
     </Helmet>
     <Header />
-    <main
-      style={{ backgroundColor: "var(--main-color)" }}
-      className="mainStyles"
-    >
+    <main className="mainStyles">
       {children}
     </main>
     <Footer />

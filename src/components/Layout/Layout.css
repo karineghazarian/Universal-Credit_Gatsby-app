@@ -68,7 +68,7 @@ button {
 
 .mainStyles {
   padding-top: 70px;
-  min-height: 100%;
+  min-height: 50vh;
 }
 
 @font-face {

@@ -1,5 +1,3 @@
-import React from "react"
-
 import useNavigateTo from "../hooks/useNavigateTo"
 
 const IndexPage = () => {

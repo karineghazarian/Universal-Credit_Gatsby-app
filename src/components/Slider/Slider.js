@@ -16,9 +16,13 @@ const Slider = ({ slider, title, allFile }) => {
         alt={slide.cover.name}
         className="slider-image"
       />
-      <Link to={slide.link}>
+      {slide?.page?.path ? (
+        <Link to={slide.page.path}>
+          <h1>{slide.caption}</h1>
+        </Link>
+      ) : !!slide?.caption && (
         <h1>{slide.caption}</h1>
-      </Link>
+      )}
     </div>
   ))
 
@@ -33,7 +37,7 @@ const Slider = ({ slider, title, allFile }) => {
           withNavigation
         />
       ) : (
-        <Slide slide={slider[0]} allFile={allFile}/>
+        <Slide slide={slider[0]} allFile={allFile} />
       )}
     </div>
   )

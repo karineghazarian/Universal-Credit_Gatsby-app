@@ -12,7 +12,7 @@ const Slide = ({ slide, allFile }) => (
       alt={slide.cover.name}
       className="slider-image"
     />
-    <h1 className={styles.slideCaption}>{slide.caption}</h1>
+    {!!slide?.caption && <h1 className={styles.slideCaption}>{slide.caption}</h1>}
   </div>
 )
 

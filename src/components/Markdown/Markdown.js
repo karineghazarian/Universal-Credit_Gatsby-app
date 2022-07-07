@@ -9,7 +9,7 @@ const Markdown = ({ markdown, className, title }) =>
 {
   const transformImageUri = useCallback(
     uri =>
-      uri.startsWith("http") ? uri : `${process.env.GATSBY_API_URL}${uri}`,
+      uri.startsWith("http") ? uri : `${process.env.STRAPI_API_URL}${uri}`,
     []
   )
 

@@ -92,18 +92,17 @@
   text-decoration: none;
   color: #424242;
   display: block;
-  margin-top: 5px;
+  margin-top: 4px;
   min-width: 123px;
   white-space: nowrap;
+  line-height: 14px;
+  font-size: 14px;
+  text-align: center;
 }
 
 .contactPhoneContainer {
   padding-right: 3rem;
   padding-left: 1rem;
-}
-
-.contactPhone:first-child {
-  margin-top: 0;
 }
 
 .link {

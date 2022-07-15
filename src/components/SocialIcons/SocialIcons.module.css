@@ -1,0 +1,27 @@
+.socialLinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-block: 5px;
+}
+
+.linkContainer {
+  line-height: normal;
+}
+
+.socialLogo {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid black;
+  transition: all 0.3s;
+  cursor: pointer;
+  margin-inline: 8px;
+}
+
+.socialLogo:hover {
+  border: 1px solid white;
+  box-shadow: 0 0 4px 2px #bcbcbc;
+}

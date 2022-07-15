@@ -5,8 +5,9 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Animated from "../Animated"
 
 import * as styles from "./Header.module.css"
+import SocialIcons from "../SocialIcons/SocialIcons";
 
-const Header = () => {
+function Header() {
   const { strapiHeader } = useStaticQuery(graphql`
     query HeaderQuery {
       strapiHeader {
@@ -34,12 +35,28 @@ const Header = () => {
           text
           id
         }
+        socialMediaLinks {
+          id
+          link
+          icon {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(placeholder: BLURRED)
+              }
+            }
+            name
+          }
+        }
       }
     }
   `)
 
-  const { navbarItems = [], headerLogo = {}, contactPhone = [] } =
-    strapiHeader || {}
+  const {
+    navbarItems = [],
+    headerLogo = {},
+    contactPhone = [],
+    socialMediaLinks = []
+  } = strapiHeader || {}
 
   const [hamburger, setHamburger] = useState(false)
   const [show, setShow] = useState(false)
@@ -47,8 +64,6 @@ const Header = () => {
   const [rotate, setRotate] = useState(null)
 
   const timeoutIdRef = React.useRef()
-
-
 
   const toggleIcon = () => {
     setRotate(!rotate)
@@ -189,6 +204,7 @@ const Header = () => {
                     {phone.text}
                   </a>
                 ))}
+                <SocialIcons socialLinks={socialMediaLinks} />
               </div>
             </header>
           )}

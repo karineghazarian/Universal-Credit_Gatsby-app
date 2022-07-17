@@ -1,5 +1,4 @@
 import React from 'react';
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
 
 import { Link } from "gatsby";
@@ -18,8 +17,8 @@ function SocialIcons({ socialLinks = [] }) {
           target="_blank"
           rel="noreferrer"
         >
-          <GatsbyImage
-            image={getImage(social.icon.localFile)}
+          <img
+            src={social.icon?.localFile?.publicURL}
             alt={social.icon.name}
             className={styles.socialLogo}
           />

@@ -8,17 +8,17 @@ const portalRoot =
 
 export default class Portal extends Component {
   constructor() {
-    super()
+    super();
     // Use a ternary operator to make sure that the document object is defined
     this.el =
       typeof document !== `undefined` ? document.createElement("div") : null
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
     portalRoot.appendChild(this.el)
   }
 
-  componentWillUnmount = () => {
+  componentWillUnmount() {
     portalRoot.removeChild(this.el)
   }
 

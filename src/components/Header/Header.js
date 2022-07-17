@@ -5,7 +5,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Animated from "../Animated"
 
 import * as styles from "./Header.module.css"
-import SocialIcons from "../SocialIcons/SocialIcons";
+import SocialIcons from "../SocialIcons/SocialIcons"
 
 function Header() {
   const { strapiHeader } = useStaticQuery(graphql`
@@ -40,9 +40,7 @@ function Header() {
           link
           icon {
             localFile {
-              childImageSharp {
-                gatsbyImageData(placeholder: BLURRED)
-              }
+              publicURL
             }
             name
           }
@@ -55,7 +53,7 @@ function Header() {
     navbarItems = [],
     headerLogo = {},
     contactPhone = [],
-    socialMediaLinks = []
+    socialMediaLinks = [],
   } = strapiHeader || {}
 
   const [hamburger, setHamburger] = useState(false)
@@ -191,7 +189,7 @@ function Header() {
                   )}
                 </nav>
               </div>
-              <div className={styles.contactPhoneContainer}>
+              <div className={styles.contactContainer} style={hamburger ? {} : {paddingRight: '3rem'}}>
                 {contactPhone?.map(phone => (
                   <a
                     key={phone.link}

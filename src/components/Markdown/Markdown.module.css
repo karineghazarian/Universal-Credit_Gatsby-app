@@ -2,11 +2,17 @@
   padding: 2rem 5rem;
 }
 
+.markdownContainer img {
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+}
+
 @media screen and (max-width: 768px) {
   .reactMarkDown {
-    padding: 0rem 1.5rem;
+    padding: 0 1.5rem;
   }
   .markdownContainer {
-    padding: 2rem 0rem;
+    padding: 2rem 0;
   }
 }
